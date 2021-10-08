@@ -18,6 +18,6 @@ class IncomesSeeder extends Seeder
         $income->name = 'salary';
         $income->note = '';
         $income->amount = '100000';
-
+        $income->save();
     }
 }

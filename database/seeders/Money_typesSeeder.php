@@ -18,5 +18,6 @@ class Money_typesSeeder extends Seeder
         $money_type->name = 'VND';
         $money_type->icon = 'image.jpg';
         $money_type->mark = 'VND';
+        $money_type->save();
     }
 }

@@ -17,6 +17,6 @@ class Income_categoriesSeeder extends Seeder
         $income_categories = new Income_category();
         $income_categories->name = 'salary';
         $income_categories->icon = 'image.jpg';
-
+        $income_categories->save();
     }
 }

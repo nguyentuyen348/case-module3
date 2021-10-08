@@ -18,6 +18,6 @@ class CostsSeeder extends Seeder
         $cost->name = 'eat';
         $cost->note = '';
         $cost->amount = '10000';
-    
+        $cost->save();
     }
 }

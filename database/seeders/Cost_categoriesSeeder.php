@@ -17,7 +17,7 @@ class Cost_categoriesSeeder extends Seeder
         $cost_categories = new Cost_category();
         $cost_categories->name = 'eat';
         $cost_categories->icon = 'image.jpg';
-
+        $cost_categories->save();
         
     }
 }
