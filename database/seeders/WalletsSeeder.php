@@ -22,6 +22,6 @@ class WalletsSeeder extends Seeder
         $wallet->status = 'disable';
         $wallet->cost_id = '1';
         $wallet->income_id = '1';
-
+        $wallet->save();
     }
 }

@@ -17,5 +17,6 @@ class Wallet_categoriesSeeder extends Seeder
         $wallet_categories = new Wallet_category();
         $wallet_categories->name = 'consumption';
         $wallet_categories->icon = 'image.jpg';
+        $wallet_categories->save();
         }
 }
