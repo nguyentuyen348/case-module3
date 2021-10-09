@@ -22,7 +22,7 @@ $(document).ready(function () {
 
             })
         }
-    })
+    });
 
 
     $('#search-user').keyup(function () {
@@ -98,7 +98,24 @@ $(document).ready(function () {
         })
     });
 
-    function showBooksBorrow() {
+    /*delete-wallet-category*/
+    $('.delete-wallet-category').click(function () {
+        if (confirm('Are you sure')) {
+            let idCategory = $(this).attr('data-id');
+            $.ajax({
+                url: origin + '/users/wallets/categories/' + idCategory + '/delete',
+                method: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    $('#wallet-category-' + idCategory).remove();
+                },
+                error: function (error) {
 
-    }
+                }
+
+            })
+        }
+    });
+
+
 })

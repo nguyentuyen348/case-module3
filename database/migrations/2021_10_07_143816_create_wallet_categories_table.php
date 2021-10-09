@@ -29,6 +29,6 @@ class CreateWalletCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wallet_categories');
+        Schema::dropIfExists('walletCategories');
     }
 }

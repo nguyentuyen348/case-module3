@@ -1,18 +1,4 @@
-<!--
-=========================================================
-* Soft UI Dashboard - v1.0.3
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,6 +20,11 @@
     <link href="{{ asset('css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('css/soft-ui-dashboard.css?v=1.0.3') }}" rel="stylesheet" />
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="{{asset('js/my.js')}}"></script>
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -175,11 +166,11 @@
             @yield('content')
 
 
- 
+
             @include('backend.layout.footer')
         </div>
     </main>
-   
+
     <!--   Core JS Files   -->
     <script src="{{ asset('/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('/js/core/bootstrap.min.js') }}"></script>
@@ -369,6 +360,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('/js/soft-ui-dashboard.min.js?v=1.0.3') }}"></script>
+    <script src="{{asset('js/my.js')}}"></script>
 </body>
 
 </html>

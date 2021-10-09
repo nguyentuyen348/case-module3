@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="../pages/tables.html">
+                    <a class="nav-link  " href="{{route('wallets.index')}}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -63,11 +63,11 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Tables</span>
+                        <span class="nav-link-text ms-1">Wallets</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="../pages/billing.html">
+                    <a class="nav-link  " href="{{route('walletCategories.index')}}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
@@ -90,7 +90,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Billing</span>
+                        <span class="nav-link-text ms-1">Wallet category</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -251,7 +251,7 @@
         <div class="sidenav-footer mx-3 ">
             <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
                 <div class="full-background"
-                    style="background-image: url('../assets/img/curved-images/white-curved.jpeg')"></div>
+                    {{--style="background-image: url()" --}}></div>
                 <div class="card-body text-start p-3 w-100">
                     <div
                         class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
