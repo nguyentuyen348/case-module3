@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\WalletCategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('backend.admin.dashboard');
+// Route::get('/', function () {
+//     return view('backend.admin.dashboard');
+// });
+
+Route::prefix('pages')->group(function () {
+    Route::get('/login', [LoginController::class, 'showFormLogin'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('pages.login');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('pages.logout');
+    Route::get('/register', [LoginController::class, 'showFormRegister'])->name('pages.showFormRegister');
+    Route::post('/register', [LoginController::class, 'register'])->name('pages.register');
+    Route::get('change-password', [LoginController::class, 'showFormChangePassword'])->name('pages.showFormChangePassword');
+    Route::post('change-password', [LoginController::class, 'changePassword'])->name('pages.changePassword');
+    
 });
 
 Route::prefix('users')->group(function (){
