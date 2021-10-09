@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cost_category extends Model
+class Income_category extends Model
 {
-    protected $table = 'costs_categories';
+    protected $table = 'incomes_categories';
     use HasFactory;
 }

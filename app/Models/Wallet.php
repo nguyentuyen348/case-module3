@@ -5,8 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cost_category extends Model
+class Wallet extends Model
 {
-    protected $table = 'costs_categories';
     use HasFactory;
+
+    public function wallet_category()
+    {
+        return $this->belongsTo(Wallet_category::class);
+    }
 }

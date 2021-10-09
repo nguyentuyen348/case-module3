@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWalletCategoriesTable extends Migration
+class AddForeignToWalletsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateWalletCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('wallet_categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('icon')->nullable();           
-            $table->timestamps();
+        Schema::table('wallets', function (Blueprint $table) {
+            $table->foreign('wallet_category_id')->references('id')->on('wallet_categories');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateWalletCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('walletCategories');
+        Schema::table('wallets', function (Blueprint $table) {
+            //
+        });
     }
 }
