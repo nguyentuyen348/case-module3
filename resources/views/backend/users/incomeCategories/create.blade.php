@@ -1,11 +1,11 @@
 @extends('backend.layout.master')
-@section('title','Create Cost Category')
+@section('title','Create Income Category')
 @section('content')
     <div>
     <form action="" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group col-md-9">
-            <label for="category">Create Cost Category </label>
+            <label for="category">Create Income Category </label>
             <input type="text" name="name" class="form-control" id="category" aria-describedby="">
             <small id="" class="form-text text-muted"></small>
         </div>

@@ -50,7 +50,7 @@
                 </div>
 
                 <div>
-                    <input class="input100 @error('email') is-invalid @enderror" type="password" id="password" name="password" placeholder="Password">
+                    <input class="input100 @error('password') is-invalid @enderror" type="password" id="password" name="password" placeholder="Password">
                     <span class="focus-input100"></span>
                     @error('password')
                         <p class="text-danger">{{ $message }}</p>
@@ -112,7 +112,20 @@
     <!--===============================================================================================-->
     <script src="{{ asset('js/main.js') }}"></script>
 
-
+    <script>
+        function visibility() {
+            var x = document.getElementById('password');
+            if (x.type === 'password') {
+                x.type = "text";
+                $('#eyeShow').show();
+                $('#eyeSlash').hide();
+            } else {
+                x.type = "password";
+                $('#eyeShow').hide();
+                $('#eyeSlash').show();
+            }
+        }
+    </script>
 </body>
 
 </html>
