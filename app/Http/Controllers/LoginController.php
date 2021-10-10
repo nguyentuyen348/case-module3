@@ -13,14 +13,14 @@ use App\Http\Requests\ChangePasswordRequest;
 
 class LoginController extends Controller
 {
-    function showFormLogin()
+    public function showFormLogin()
     {
         return view('pages.login');
     }
 
 
 
-    function login(LoginRequest $request)
+    public function login(LoginRequest $request)
     {
         $email = $request->email;
         $password = $request->password;
@@ -31,7 +31,7 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('pages.showFormChangePassword');
+            return redirect()->route('wallets.create');
         } else {
             return back();
         }
@@ -39,20 +39,20 @@ class LoginController extends Controller
 
 
 
-    function logout()
+    public function logout()
     {
         Auth::logout();
         return redirect()->route('login');
     }
 
 
-    function showFormRegister(){
+    public function showFormRegister(){
         return view('pages.register');
     }
 
 
 
-    function register(RegisterRequest $request){
+    public function register(RegisterRequest $request){
 
         DB::beginTransaction();
         try {

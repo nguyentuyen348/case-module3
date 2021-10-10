@@ -9,4 +9,8 @@ class Income_category extends Model
 {
     protected $table = 'income_categories';
     use HasFactory;
+
+    function income(){
+        return $this->belongsTo(Income::class);
+    }
 }

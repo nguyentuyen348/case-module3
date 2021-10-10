@@ -1,5 +1,5 @@
 @extends('backend.layout.master')
-@section('title','list')
+@section('title','List Cost')
 @section('content')
 
 
@@ -29,7 +29,7 @@
                                 <tbody>
                                 @foreach($costs as $cost)
                                     <tr id="cost-{{$cost->id}}">
-                                        <td>
+                                        <td class="table-active">
                                             {{$cost->name}}
                                         </td>
                                         <td>
