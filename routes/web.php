@@ -34,17 +34,17 @@ Route::prefix('pages')->group(function () {
     Route::post('change-password', [LoginController::class, 'changePassword'])->name('pages.changePassword');
 
 });
-
-Route::prefix('users')->group(function () {
-    Route::prefix('wallets')->group(function () {
-        Route::get('list', [WalletController::class, 'index'])->name('wallets.index');
-        Route::get('create', [WalletController::class, 'create'])->name('wallets.create');
-        Route::post('create', [WalletController::class, 'store'])->name('wallets.store');
-        Route::get('{id}/detail', [WalletController::class, 'show'])->name('wallets.detail');
-        Route::get('{id}/edit', [WalletController::class, 'edit'])->name('wallets.edit');
-        Route::post('{id}/update', [WalletController::class, 'update'])->name('wallets.update');
-        Route::get('{id}/delete', [WalletController::class, 'delete'])->name('wallets.delete');
-        Route::get('{id}/costs/create', [WalletController::class, 'createCost'])->name('wallets.createCost');
+Route::middleware('auth')->prefix('admin')->group(function () {
+    Route::prefix('users')->group(function () {
+        Route::prefix('wallets')->group(function () {
+            Route::get('list', [WalletController::class, 'index'])->name('wallets.index');
+            Route::get('create', [WalletController::class, 'create'])->name('wallets.create');
+            Route::post('create', [WalletController::class, 'store'])->name('wallets.store');
+            Route::get('{id}/detail', [WalletController::class, 'show'])->name('wallets.detail');
+            Route::get('{id}/edit', [WalletController::class, 'edit'])->name('wallets.edit');
+            Route::post('{id}/update', [WalletController::class, 'update'])->name('wallets.update');
+            Route::get('{id}/delete', [WalletController::class, 'delete'])->name('wallets.delete');
+            Route::get('{id}/costs/create', [WalletController::class, 'createCost'])->name('wallets.createCost');
         Route::post('{id}/costs/create', [WalletController::class, 'storeCost'])->name('wallets.storeCost');
 
         Route::prefix('categories')->group(function () {
@@ -87,6 +87,7 @@ Route::prefix('users')->group(function () {
                 Route::post('{id}/edit', [IncomeCategoryController::class, 'update'])->name('incomeCategories.update');
                 Route::get('{id}/delete', [IncomeCategoryController::class, 'delete'])->name('incomeCategories.delete');
             });
+        });
         });
     });
 });
