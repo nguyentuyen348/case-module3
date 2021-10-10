@@ -12,8 +12,9 @@ class WalletController extends Controller
 {
     public function index()
     {
+        $wallet_categories=Wallet_category::all();
         $wallets=Wallet::all();
-        return view('backend.users.wallets.list',compact('wallets'));
+        return view('backend.users.wallets.list',compact('wallets','wallet_categories'));
     }
 
     public function create()
@@ -65,14 +66,16 @@ class WalletController extends Controller
         return redirect()->route('wallets.index');
     }
 
-    public function createCost()
+    public function createCost($id)
     {
+        $wallet=Wallet::findOrFail($id);
         $costCategories=Cost_category::all();
-        return view('backend.users.wallets.createCost',compact('costCategories'));
+        return view('backend.users.wallets.createCost',compact('costCategories','wallet'));
     }
 
     public function storeCost(Request $request,Cost $cost)
     {
+        $cost->wallet_id=$request->wallet_id;
         $cost->name=$request->name;
         $cost->cost_category_id=$request->cost_category_id;
         $cost->amount=$request->amount;

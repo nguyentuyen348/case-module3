@@ -13,6 +13,12 @@ class Wallet extends Model
     {
         return $this->belongsTo(Wallet_category::class);
     }
+
+    public function cost()
+    {
+        return $this->hasMany(Cost::class);
+    }
+
     function checkCategoryId($id)
     {
         if ($this->cost_category_id == $id) {

@@ -33,7 +33,9 @@
                                             {{$cost->name}}
                                         </td>
                                         <td>
+                                            @if($cost->cost_category)
                                             <img width="100px" src="{{asset('storage/'.$cost->cost_category->icon)}}" alt="{{asset('storage/'.$cost->cost_category->icon)}}">
+                                            @endif
                                         </td>
                                         <td>
                                             {{$cost->amount}}
