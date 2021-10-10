@@ -14,6 +14,10 @@ class Income extends Model
     }
 
 
+    function wallet(){
+        return $this->hasMany(Wallet::class);
+    }
+
     function checkCategoryId($id)
     {
         if ($this->income_category_id == $id) {
