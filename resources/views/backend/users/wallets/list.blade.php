@@ -19,7 +19,9 @@
                             <div class="col-md-4" style="text-align: center;padding: 20px 20px 20px 20px; ">
                                 <div style="width: 250px;border: 2px solid;border-radius: 50px;" >
                                     <a href="{{route('wallets.detail',$wallet->id)}}">
+                                        @if($wallet->wallet_category)
                                 <img style="width: 50px;padding-top: 20px" src="{{asset('storage/'.$wallet->wallet_category->icon)}}" alt="">
+                                        @endif
                                     <p>{{$wallet->name}}</p>
                                     </a>
                                 <p>{{$wallet->amount}}</p>

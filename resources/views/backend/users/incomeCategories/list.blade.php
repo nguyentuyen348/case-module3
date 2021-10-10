@@ -2,7 +2,7 @@
 @section('title','List Cost Income')
 @section('content')
 
-    <div>
+    <div style="margin-left: 22px">
         <a href="{{route('incomeCategories.create')}}" class="btn btn-success">create new</a>
     </div>
     <div class="container-fluid py-4">
@@ -17,9 +17,9 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 col-md-4">Name</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 col-md-4">Icon</th>
-                                    <th class="text-secondary opacity-7 col-md-4" >Action</th>
+                                    <th class="col-md-4"><p>NAME</p></th>
+                                    <th class="col-md-4"><p>ICON</p></th>
+                                    <th class="col-md-4"><p>ACTION</p></th>
                                 </tr>
                                 </thead>
                                 <tbody>
