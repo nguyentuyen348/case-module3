@@ -20,9 +20,9 @@ use App\Http\Controllers\IncomeCategoryController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('backend.admin.dashboard');
-// });
+ Route::get('/', function () {
+     return redirect()->route('login');
+ });
 
 Route::prefix('pages')->group(function () {
     Route::get('/login', [LoginController::class, 'showFormLogin'])->name('login');
@@ -37,22 +37,6 @@ Route::prefix('pages')->group(function () {
 
 
 Route::middleware('auth')->prefix('admin')->group(function () {
-    Route::prefix('users')->group(function () {
-        Route::prefix('wallets')->group(function () {
-            Route::get('list', [WalletController::class, 'index'])->name('wallets.index');
-            Route::get('create', [WalletController::class, 'create'])->name('wallets.create');
-            Route::post('create', [WalletController::class, 'store'])->name('wallets.store');
-            Route::get('{id}/edit', [WalletController::class, 'edit'])->name('wallets.edit');
-            Route::post('{id}/update', [WalletController::class, 'update'])->name('wallets.update');
-            Route::get('{id}/delete', [WalletController::class, 'delete'])->name('wallets.delete');
-            Route::prefix('categories')->group(function () {
-                Route::get('/list', [WalletCategoryController::class, 'index'])->name('walletCategories.index');
-                Route::get('/create', [WalletCategoryController::class, 'create'])->name('walletCategories.create');
-                Route::post('/create', [WalletCategoryController::class, 'store'])->name('walletCategories.store');
-                Route::get('{id}/edit', [WalletCategoryController::class, 'edit'])->name('walletCategories.edit');
-                Route::post('{id}/edit', [WalletCategoryController::class, 'update'])->name('walletCategories.update');
-                Route::get('{id}/delete', [WalletCategoryController::class, 'delete'])->name('walletCategories.delete');
-            });
             Route::prefix('users')->group(function () {
                 Route::prefix('wallets')->group(function () {
                     Route::get('list', [WalletController::class, 'index'])->name('wallets.index');
@@ -108,4 +92,4 @@ Route::middleware('auth')->prefix('admin')->group(function () {
                     Route::get('{id}/delete', [CostController::class, 'delete'])->name('costs.delete');
                 });
             });
-
+        });

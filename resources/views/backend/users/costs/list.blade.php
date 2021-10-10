@@ -28,12 +28,14 @@
                                 </thead>
                                 <tbody>
                                 @foreach($costs as $cost)
-                                    <tr id="cost-{{$cost->id}}">
-                                        <td class="table-active">
+                                    <tr class="table-active" id="cost-{{$cost->id}}">
+                                        <td>
                                             {{$cost->name}}
                                         </td>
                                         <td>
+                                            @if($cost->cost_category)
                                             <img width="100px" src="{{asset('storage/'.$cost->cost_category->icon)}}" alt="{{asset('storage/'.$cost->cost_category->icon)}}">
+                                            @endif
                                         </td>
                                         <td>
                                             {{$cost->amount}}
