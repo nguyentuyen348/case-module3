@@ -11,8 +11,16 @@
             </div>
             <div class="form-group col-md-9">
                 <label for="icon">Icon</label>
-                <input type="file" value="{{$wallet_category->icon}}" class="form-control" id="icon" name="icon">
-                <img width="100px" src="{{asset('storage/'.$wallet_category->icon)}}" alt="{{asset('storage/'.$wallet_category->icon)}}">
+                @foreach($walletCategories as $walletCategory)
+                    <input  @if($wallet->checkCategoryId($walletCategory->id))
+                            checked
+                            @endif
+                            type="checkbox" id="cost_category_id-{{$walletCategory->id}}" name="cost_category_id" value="{{$walletCategory->id}}">
+                    {{-- <label for="cost_category_id-{{$costCategory->id}}">{{$costCategory->name}}</label>--}}
+                    <label for="cost_category_id-{{$walletCategory->id}}"><img width="100px" src="{{asset('storage/'.$walletCategory->icon)}}"
+                                                                             alt="{{asset('storage/'.$walletCategory->icon)}}">
+                    </label>
+                @endforeach
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cost_category extends Model
 {
-    protected $table = 'costs_categories';
+    protected $table = 'cost_categories';
     use HasFactory;
+
+    public function cost()
+    {
+        return $this->belongsTo(Cost::class);
+    }
 }

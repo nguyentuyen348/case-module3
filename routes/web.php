@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CostCategoryController;
+use App\Http\Controllers\CostController;
 use App\Http\Controllers\WalletCategoryController;
+use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 
@@ -27,25 +30,44 @@ Route::prefix('pages')->group(function () {
     Route::post('/register', [LoginController::class, 'register'])->name('pages.register');
     Route::get('change-password', [LoginController::class, 'showFormChangePassword'])->name('pages.showFormChangePassword');
     Route::post('change-password', [LoginController::class, 'changePassword'])->name('pages.changePassword');
-    
+
 });
 
-Route::prefix('users')->group(function (){
-    Route::prefix('wallets')->group(function (){
-        Route::get('list',[\App\Http\Controllers\WalletController::class,'index'])->name('wallets.index');
-        Route::get('create',[\App\Http\Controllers\WalletController::class,'create'])->name('wallets.create');
-        Route::post('create',[\App\Http\Controllers\WalletController::class,'store'])->name('wallets.store');
-        Route::get('{id}/edit',[\App\Http\Controllers\WalletController::class,'edit'])->name('wallets.edit');
-        Route::post('{id}/update',[\App\Http\Controllers\WalletController::class,'update'])->name('wallets.update');
-        Route::get('{id}/delete',[\App\Http\Controllers\WalletController::class,'delete'])->name('wallets.delete');
-        Route::prefix('categories')->group(function (){
-            Route::get('/list',[WalletCategoryController::class,'index'])->name('walletCategories.index');
-            Route::get('/create',[WalletCategoryController::class,'create'])->name('walletCategories.create');
-            Route::post('/create',[WalletCategoryController::class,'store'])->name('walletCategories.store');
-            Route::get('{id}/edit',[WalletCategoryController::class,'edit'])->name('walletCategories.edit');
-            Route::post('{id}/edit',[WalletCategoryController::class,'update'])->name('walletCategories.update');
-            Route::get('{id}/delete',[WalletCategoryController::class,'delete'])->name('walletCategories.delete');
-        });
+Route::prefix('users')->group(function () {
+    Route::prefix('wallets')->group(function () {
+        Route::get('list', [WalletController::class, 'index'])->name('wallets.index');
+        Route::get('create', [WalletController::class, 'create'])->name('wallets.create');
+        Route::post('create', [WalletController::class, 'store'])->name('wallets.store');
+        Route::get('{id}/detail',[WalletController::class,'show'])->name('wallets.detail');
+        Route::get('{id}/edit', [WalletController::class, 'edit'])->name('wallets.edit');
+        Route::post('{id}/update', [WalletController::class, 'update'])->name('wallets.update');
+        Route::get('{id}/delete', [WalletController::class, 'delete'])->name('wallets.delete');
+        Route::get('costs/create', [WalletController::class, 'createCost'])->name('wallets.createCost');
+        Route::post('costs/create', [WalletController::class, 'storeCost'])->name('wallets.storeCost');
 
+        Route::prefix('categories')->group(function () {
+            Route::get('/list', [WalletCategoryController::class, 'index'])->name('walletCategories.index');
+            Route::get('/create', [WalletCategoryController::class, 'create'])->name('walletCategories.create');
+            Route::post('/create', [WalletCategoryController::class, 'store'])->name('walletCategories.store');
+            Route::get('{id}/edit', [WalletCategoryController::class, 'edit'])->name('walletCategories.edit');
+            Route::post('{id}/edit', [WalletCategoryController::class, 'update'])->name('walletCategories.update');
+            Route::get('{id}/delete', [WalletCategoryController::class, 'delete'])->name('walletCategories.delete');
+        });
+    });
+    Route::prefix('costs')->group(function () {
+        Route::prefix('categories')->group(function () {
+            Route::get('list', [CostCategoryController::class, 'index'])->name('costCategories.index');
+            Route::get('create', [CostCategoryController::class, 'create'])->name('costCategories.create');
+            Route::post('create', [CostCategoryController::class, 'store'])->name('costCategories.store');
+            Route::get('{id}/edit', [CostCategoryController::class, 'edit'])->name('costCategories.edit');
+            Route::post('{id}/edit', [CostCategoryController::class, 'update'])->name('costCategories.update');
+            Route::get('{id}/delete', [CostCategoryController::class, 'delete'])->name('costCategories.delete');
+        });
+        Route::get('list', [CostController::class, 'index'])->name('costs.index');
+        Route::get('create', [CostController::class, 'create'])->name('costs.create');
+        Route::post('create', [CostController::class, 'store'])->name('costs.store');
+        Route::get('{id}/edit', [CostController::class, 'edit'])->name('costs.edit');
+        Route::post('{id}/edit', [CostController::class, 'update'])->name('costs.update');
+        Route::get('{id}/delete', [CostController::class, 'delete'])->name('costs.delete');
     });
 });
