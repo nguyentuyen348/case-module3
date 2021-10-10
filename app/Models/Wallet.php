@@ -14,6 +14,10 @@ class Wallet extends Model
         return $this->belongsTo(Wallet_category::class);
     }
 
+    public function cost()
+    {
+        return $this->hasMany(Cost::class);
+    }
 
     public function income()
     {

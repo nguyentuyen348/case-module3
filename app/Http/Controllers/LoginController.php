@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Mockery\Exception;
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests\LoginRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Mockery\Exception;
 
 class LoginController extends Controller
 {
@@ -17,7 +17,6 @@ class LoginController extends Controller
     {
         return view('pages.login');
     }
-
 
 
     public function login(LoginRequest $request)
@@ -38,7 +37,6 @@ class LoginController extends Controller
     }
 
 
-
     public function logout()
     {
         Auth::logout();
@@ -46,13 +44,14 @@ class LoginController extends Controller
     }
 
 
-    public function showFormRegister(){
+    public function showFormRegister()
+    {
         return view('pages.register');
     }
 
 
-
-    public function register(RegisterRequest $request){
+    public function register(RegisterRequest $request)
+    {
 
         DB::beginTransaction();
         try {
@@ -67,8 +66,6 @@ class LoginController extends Controller
         }
         return redirect()->route('login');
     }
-    
-
 
 
     public function showFormChangePassword()

@@ -12,6 +12,9 @@
                 <input type="text" name="name" class="form-control" id="category" aria-describedby="" placeholder="enter name">
                 <small id="" class="form-text text-muted"></small>
             </div>
+
+
+
             <label>Icon</label>
 
             <div class="form-group col-md-9" style="display: flex">

@@ -23,7 +23,7 @@
                                     <th class="col-md-2 "><p>AMOUNT</p></th>
                                     <th class="col-md-2"><p>NOTE</p></th>
                                     <th class="col-md-2"><p>CREATED</p></th>
-                                    <th class="col-md-2" ><p>ACTION</p></th>
+                                    <th class="col-md-2"><p>ACTION</p></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -34,7 +34,9 @@
                                         </td>
                                         <td>
                                             @if($cost->cost_category)
-                                            <img width="100px" src="{{asset('storage/'.$cost->cost_category->icon)}}" alt="{{asset('storage/'.$cost->cost_category->icon)}}">
+                                                <img width="100px"
+                                                     src="{{asset('storage/'.$cost->cost_category->icon)}}"
+                                                     alt="{{asset('storage/'.$cost->cost_category->icon)}}">
                                             @endif
                                         </td>
                                         <td>

@@ -12,6 +12,14 @@
                 <input type="text" name="name" class="form-control" id="category" aria-describedby="" placeholder="enter name">
                 <small id="" class="form-text text-muted"></small>
             </div>
+
+            <div class="form-group col-md-9">
+                <label for="wallet">Wallet</label>
+                <input type="text" value="{{$wallet->id}}">
+                @dd($wallet->id)
+                <small id="" class="form-text text-muted"></small>
+            </div>
+
             <label>Icon</label>
 
             <div class="form-group col-md-9" style="display: flex">

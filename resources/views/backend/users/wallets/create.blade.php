@@ -9,7 +9,8 @@
             @csrf
             <div class="form-group col-md-9">
                 <label for="category">Name</label>
-                <input type="text" name="name" class="form-control" id="category" aria-describedby="" placeholder="enter name wallet">
+                <input type="text" name="name" class="form-control" id="category" aria-describedby=""
+                       placeholder="enter name wallet">
                 <small id="" class="form-text text-muted"></small>
             </div>
             <div class="form-group col-md-9">
@@ -20,7 +21,8 @@
                     @foreach($walletCategories as $walletCategory)
                         <div style="display: flex;padding: 0 40px 10px 0">
                             <div>
-                                <input type="checkbox" id="wallet_category_id" name="wallet_category_id" value="{{$walletCategory->id}}">
+                                <input type="checkbox" id="wallet_category_id" name="wallet_category_id"
+                                       value="{{$walletCategory->id}}">
                             </div>
                             <div>
                                 <label for="">{{$walletCategory->name}}</label>

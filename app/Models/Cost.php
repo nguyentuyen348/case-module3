@@ -20,4 +20,9 @@ class Cost extends Model
         }
         return false;
     }
+
+    public function wallet()
+    {
+        return $this->belongsTo(Wallet::class);
+    }
 }

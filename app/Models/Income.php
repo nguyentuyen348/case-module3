@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Income extends Model
 {
     use HasFactory;
-    
-    function income_category(){
+
+    function income_category()
+    {
         return $this->belongsTo(Income_category::class);
     }
 
 
-    function wallet(){
+    function wallet()
+    {
         return $this->hasMany(Wallet::class);
     }
 

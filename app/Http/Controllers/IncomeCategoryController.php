@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Income_category;
+use Illuminate\Http\Request;
 
 class InComeCategoryController extends Controller
 {
@@ -59,6 +59,6 @@ class InComeCategoryController extends Controller
     {
         $income_category = Income_category::findOrFail($id);
         $income_category->delete();
-        return response()->json(['message','delete successfully']);
+        return response()->json(['message', 'delete successfully']);
     }
 }

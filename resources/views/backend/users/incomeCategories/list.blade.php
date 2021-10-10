@@ -29,11 +29,15 @@
                                             {{$income_category->name}}
                                         </td>
                                         <td>
-                                            <img width="100px" src="{{asset('storage/'.$income_category->icon)}}" alt="{{asset('storage/'.$income_category->icon)}}">
-                                        </td>  
+                                            <img width="100px" src="{{asset('storage/'.$income_category->icon)}}"
+                                                 alt="{{asset('storage/'.$income_category->icon)}}">
+                                        </td>
                                         <td>
-                                            <a href="{{route('incomeCategories.edit',$income_category->id)}}" class="btn btn-warning" >UPDATE</a>
-                                            <button data-id="{{$income_category->id}}" class="btn btn-danger delete-income-category">DELETE</button>
+                                            <a href="{{route('incomeCategories.edit',$income_category->id)}}"
+                                               class="btn btn-warning">UPDATE</a>
+                                            <button data-id="{{$income_category->id}}"
+                                                    class="btn btn-danger delete-income-category">DELETE
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -44,7 +48,7 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
 
 @endsection

@@ -17,16 +17,16 @@
                             <table class="table align-items-center mb-0" style="text-align: center">
                                 <thead>
                                 <tr>
-                                    <th class="col-md-2" ><p>NAME</p></th>
+                                    <th class="col-md-2"><p>NAME</p></th>
                                     <th class="col-md-2"><p>AMOUNT</p></th>
                                     <th class="col-md-2 "><p>NOTE</p></th>
                                     <th class="col-md-2"><p>CREATE</p></th>
                                     <th class="col-md-2"><p>ICON</p></th>
-                                    <th class="col-md-2" ><p>ACTION</p></th>
+                                    <th class="col-md-2"><p>ACTION</p></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($incomes as $income) 
+                                @foreach($incomes as $income)
                                     <tr class="table-active" id="income-{{$income->id}}">
                                         <td>
                                             {{$income->name}}
@@ -41,12 +41,16 @@
                                             {{$income->created_at}}
                                         </td>
                                         <td>
-                                            <img width="100px" src="{{asset('storage/'.$income->income_category->icon)}}" alt="{{asset('storage/'.$income->income_category->icon)}}">
+                                            <img width="100px"
+                                                 src="{{asset('storage/'.$income->income_category->icon)}}"
+                                                 alt="{{asset('storage/'.$income->income_category->icon)}}">
                                         </td>
-                                        
+
                                         <td>
-                                            <a href="{{route('incomes.edit',$income->id)}}" class="btn btn-warning" >UPDATE</a>
-                                            <button data-id="{{$income->id}}" class="btn btn-danger delete-income">DELETE</button>
+                                            <a href="{{route('incomes.edit',$income->id)}}" class="btn btn-warning">UPDATE</a>
+                                            <button data-id="{{$income->id}}" class="btn btn-danger delete-income">
+                                                DELETE
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -57,7 +61,7 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
 
 @endsection
