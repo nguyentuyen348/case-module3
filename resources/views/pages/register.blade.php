@@ -81,7 +81,7 @@
 
                 <div class="container-login100-form-btn">
                     <a href="{{route('login')}}">
-                       <b style="font-size:1rem">Bạn đã có tài khoản? Tới trang đăng nhập</b> 
+                       <b style="font-size:1rem">Bạn đã có tài khoản? Tới trang đăng nhập</b>
                     </a>
                 </div>
 
