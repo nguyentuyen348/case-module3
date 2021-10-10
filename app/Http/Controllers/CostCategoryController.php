@@ -10,7 +10,7 @@ class CostCategoryController extends Controller
     public function index()
     {
         $cost_categories=Cost_category::all();
-        return view('backend.users.walletCategories.list',compact('cost_categories'));
+        return view('backend.users.costCategories.list',compact('cost_categories'));
     }
 
     public function create()

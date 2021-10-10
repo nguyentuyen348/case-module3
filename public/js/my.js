@@ -117,5 +117,61 @@ $(document).ready(function () {
         }
     });
 
+    /*delete-cost-category*/
+    $('.delete-cost-category').click(function () {
+        if (confirm('Are you sure')) {
+            let idCategory = $(this).attr('data-id');
+            $.ajax({
+                url: origin + '/users/costs/categories/' + idCategory + '/delete',
+                method: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    $('#cost-category-' + idCategory).remove();
+                },
+                error: function (error) {
+
+                }
+
+            })
+        }
+    });
+
+    /*delete-cost*/
+    $('.delete-cost').click(function () {
+        if (confirm('Are you sure')) {
+            let idCost = $(this).attr('data-id');
+            $.ajax({
+                url: origin + '/users/costs/' + idCost + '/delete',
+                method: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    $('#cost-' + idCost).remove();
+                },
+                error: function (error) {
+
+                }
+
+            })
+        }
+    });
+
+    /*delete-wallet*/
+    $('.delete-wallet').click(function () {
+        if (confirm('Are you sure')) {
+            let idWallet = $(this).attr('data-id');
+            $.ajax({
+                url: origin + '/users/wallets/' + idWallet + '/delete',
+                method: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    $('#wallet-' + idWallet).remove();
+                },
+                error: function (error) {
+
+                }
+
+            })
+        }
+    });
 
 })

@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Income_category extends Model
 {
-    protected $table = 'incomes_categories';
+    protected $table = 'income_categories';
     use HasFactory;
 }
