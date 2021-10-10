@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\CostCategoryController;
 use App\Http\Controllers\CostController;
+use App\Http\Controllers\InComeCategoryController;
+use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WalletCategoryController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +40,7 @@ Route::prefix('users')->group(function () {
         Route::get('list', [WalletController::class, 'index'])->name('wallets.index');
         Route::get('create', [WalletController::class, 'create'])->name('wallets.create');
         Route::post('create', [WalletController::class, 'store'])->name('wallets.store');
-        Route::get('{id}/detail',[WalletController::class,'show'])->name('wallets.detail');
+        Route::get('{id}/detail', [WalletController::class, 'show'])->name('wallets.detail');
         Route::get('{id}/edit', [WalletController::class, 'edit'])->name('wallets.edit');
         Route::post('{id}/update', [WalletController::class, 'update'])->name('wallets.update');
         Route::get('{id}/delete', [WalletController::class, 'delete'])->name('wallets.delete');
@@ -53,21 +55,38 @@ Route::prefix('users')->group(function () {
             Route::post('{id}/edit', [WalletCategoryController::class, 'update'])->name('walletCategories.update');
             Route::get('{id}/delete', [WalletCategoryController::class, 'delete'])->name('walletCategories.delete');
         });
-    });
-    Route::prefix('costs')->group(function () {
-        Route::prefix('categories')->group(function () {
-            Route::get('list', [CostCategoryController::class, 'index'])->name('costCategories.index');
-            Route::get('create', [CostCategoryController::class, 'create'])->name('costCategories.create');
-            Route::post('create', [CostCategoryController::class, 'store'])->name('costCategories.store');
-            Route::get('{id}/edit', [CostCategoryController::class, 'edit'])->name('costCategories.edit');
-            Route::post('{id}/edit', [CostCategoryController::class, 'update'])->name('costCategories.update');
-            Route::get('{id}/delete', [CostCategoryController::class, 'delete'])->name('costCategories.delete');
+        Route::prefix('costs')->group(function () {
+            Route::prefix('categories')->group(function () {
+                Route::get('list', [CostCategoryController::class, 'index'])->name('costCategories.index');
+                Route::get('create', [CostCategoryController::class, 'create'])->name('costCategories.create');
+                Route::post('create', [CostCategoryController::class, 'store'])->name('costCategories.store');
+                Route::get('{id}/edit', [CostCategoryController::class, 'edit'])->name('costCategories.edit');
+                Route::post('{id}/edit', [CostCategoryController::class, 'update'])->name('costCategories.update');
+                Route::get('{id}/delete', [CostCategoryController::class, 'delete'])->name('costCategories.delete');
+            });
+            Route::get('list', [CostController::class, 'index'])->name('costs.index');
+            Route::get('create', [CostController::class, 'create'])->name('costs.create');
+            Route::post('create', [CostController::class, 'store'])->name('costs.store');
+            Route::get('{id}/edit', [CostController::class, 'edit'])->name('costs.edit');
+            Route::post('{id}/edit', [CostController::class, 'update'])->name('costs.update');
+            Route::get('{id}/delete', [CostController::class, 'delete'])->name('costs.delete');
         });
-        Route::get('list', [CostController::class, 'index'])->name('costs.index');
-        Route::get('create', [CostController::class, 'create'])->name('costs.create');
-        Route::post('create', [CostController::class, 'store'])->name('costs.store');
-        Route::get('{id}/edit', [CostController::class, 'edit'])->name('costs.edit');
-        Route::post('{id}/edit', [CostController::class, 'update'])->name('costs.update');
-        Route::get('{id}/delete', [CostController::class, 'delete'])->name('costs.delete');
+
+        Route::prefix('incomes')->group(function () {
+            Route::get('list', [IncomeController::class, 'index'])->name('incomes.index');
+            Route::get('create', [IncomeController::class, 'create'])->name('incomes.create');
+            Route::post('create', [IncomeController::class, 'store'])->name('incomes.store');
+            Route::get('{id}/edit', [IncomeController::class, 'edit'])->name('incomes.edit');
+            Route::post('{id}/edit', [IncomeController::class, 'update'])->name('incomes.update');
+            Route::get('{id}/delete', [IncomeController::class, 'delete'])->name('incomes.delete');
+            Route::prefix('categories')->group(function () {
+                Route::get('/list', [IncomeCategoryController::class, 'index'])->name('incomeCategories.index');
+                Route::get('/create', [IncomeCategoryController::class, 'create'])->name('incomeCategories.create');
+                Route::post('/create', [IncomeCategoryController::class, 'store'])->name('incomeCategories.store');
+                Route::get('{id}/edit', [IncomeCategoryController::class, 'edit'])->name('incomeCategories.edit');
+                Route::post('{id}/edit', [IncomeCategoryController::class, 'update'])->name('incomeCategories.update');
+                Route::get('{id}/delete', [IncomeCategoryController::class, 'delete'])->name('incomeCategories.delete');
+            });
+        });
     });
 });
