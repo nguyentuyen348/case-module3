@@ -25,7 +25,8 @@
                                        value="{{$walletCategory->id}}">
                             </div>
                             <div>
-                               {{-- <label for="">{{$walletCategory->name}}</label>--}}
+                                <label for="">{{$walletCategory->name}}</label>
+                                <br>
                                 <label for=""><img width="50px" src="{{asset('storage/'.$walletCategory->icon)}}"
                                                    alt="{{asset('storage/'.$walletCategory->icon)}}">
                                 </label>

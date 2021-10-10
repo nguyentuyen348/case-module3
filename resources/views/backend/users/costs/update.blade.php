@@ -1,5 +1,5 @@
 @extends('backend.layout.master')
-@section('title','update')
+@section('title','Update Cost')
 @section('content')
     <div>
         <h6>Update Cost</h6>

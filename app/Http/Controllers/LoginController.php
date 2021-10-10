@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Mockery\Exception;
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests\LoginRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Mockery\Exception;
 
 class LoginController extends Controller
 {
-    function showFormLogin()
+    public function showFormLogin()
     {
         return view('pages.login');
     }
 
 
-
-    function login(LoginRequest $request)
+    public function login(LoginRequest $request)
     {
         $email = $request->email;
         $password = $request->password;
@@ -31,28 +30,28 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('pages.showFormChangePassword');
+            return redirect()->route('wallets.create');
         } else {
             return back();
         }
     }
 
 
-
-    function logout()
+    public function logout()
     {
         Auth::logout();
         return redirect()->route('login');
     }
 
 
-    function showFormRegister(){
+    public function showFormRegister()
+    {
         return view('pages.register');
     }
 
 
-
-    function register(RegisterRequest $request){
+    public function register(RegisterRequest $request)
+    {
 
         DB::beginTransaction();
         try {
@@ -67,8 +66,6 @@ class LoginController extends Controller
         }
         return redirect()->route('login');
     }
-    
-
 
 
     public function showFormChangePassword()

@@ -117,6 +117,23 @@ $(document).ready(function () {
         }
     });
 
+    $('.delete-income-category').click(function () {
+        if (confirm('Are you sure')) {
+            let idCategory = $(this).attr('data-id');
+            $.ajax({
+                url: origin + '/users/incomes/categories/' + idCategory + '/delete',
+                method: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    $('#income-category-' + idCategory).remove();
+                },
+                error: function (error) {
+
+                }
+
+            })
+        }
+    });
     /*delete-cost-category*/
     $('.delete-cost-category').click(function () {
         if (confirm('Are you sure')) {

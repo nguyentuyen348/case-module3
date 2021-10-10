@@ -1,5 +1,5 @@
 @extends('backend.layout.master')
-@section('title','update')
+@section('title','Update Cost Category')
 @section('content')
     <div>
         <form action="" method="post" enctype="multipart/form-data">
