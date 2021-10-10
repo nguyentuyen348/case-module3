@@ -1,11 +1,11 @@
 @extends('backend.layout.master')
-@section('title','Create Cost')
+@section('title','create')
 @section('content')
     <div>
         <div>
             <h6>Create Cost</h6>
         </div>
-        <form action="{{route('costs.store')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('wallets.storeCost')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group col-md-9">
                 <label for="category">Name</label>
@@ -19,21 +19,21 @@
                 @foreach($costCategories as $costCategory)
                     <div style="display: flex;padding: 0 40px 10px 0">
                         <div>
-                    <input type="checkbox" id="cost_category_id" name="cost_category_id" value="{{$costCategory->id}}">
+                            <input type="checkbox" id="cost_category_id" name="cost_category_id" value="{{$costCategory->id}}">
                         </div>
-                    <div>
-                        <label for="">{{$costCategory->name}}</label>
-                        <br>
-                        <label for=""><img width="50px" src="{{asset('storage/'.$costCategory->icon)}}"
-                                           alt="{{asset('storage/'.$costCategory->icon)}}">
-                        </label>
-                    </div>
-                    <div>
+                        <div>
+                            <label for="">{{$costCategory->name}}</label>
+                            <br>
+                            <label for=""><img width="50px" src="{{asset('storage/'.$costCategory->icon)}}"
+                                               alt="{{asset('storage/'.$costCategory->icon)}}">
+                            </label>
+                        </div>
+                        <div>
 
+                        </div>
                     </div>
-                </div>
                 @endforeach
-                    <br>
+                <br>
             </div>
 
             <div class="form-group col-md-9">

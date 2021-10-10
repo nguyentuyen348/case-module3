@@ -2,7 +2,7 @@
 @section('title','List Cost Category')
 @section('content')
 
-    <div>
+    <div style="margin-left: 22px">
         <a href="{{route('costCategories.create')}}" class="btn btn-success">create new</a>
     </div>
     <div class="container-fluid py-4">
@@ -17,23 +17,23 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 col-md-4">Name</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 col-md-4">Icon</th>
-                                    <th class="text-secondary opacity-7 col-md-4" >Action</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 col-md-2"><p style="padding-left: 20px">Name</p></th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 col-md-2"><p style="padding-left: 20px">Icon</p></th>
+                                    <th class="text-secondary opacity-7 col-md-4" ><p>ACTION</p></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($cost_categories as $cost_category)
-                                    <tr id="wallet-category-{{$cost_category->id}}">
+                                    <tr id="cost-category-{{$cost_category->id}}">
                                         <td>
-                                            {{$cost_category->name}}
+                                           <p style="padding-left: 30px"> {{$cost_category->name}}</p>
                                         </td>
                                         <td>
                                             <img width="100px" src="{{asset('storage/'.$cost_category->icon)}}" alt="{{asset('storage/'.$cost_category->icon)}}">
                                         </td>
                                         <td>
-                                            <a href="{{route('walletCategories.edit',$cost_category->id)}}" class="btn btn-warning" >UPDATE</a>
-                                            <button data-id="{{$cost_category->id}}" class="btn btn-danger delete-wallet-category">delete</button>
+                                            <a href="{{route('costCategories.edit',$cost_category->id)}}" class="btn btn-warning" >UPDATE</a>
+                                            <button data-id="{{$cost_category->id}}" class="btn btn-danger delete-cost-category">delete</button>
                                         </td>
                                     </tr>
                                 @endforeach
