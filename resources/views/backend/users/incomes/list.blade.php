@@ -14,14 +14,14 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-                            <table class="table align-items-center mb-0">
+                            <table class="table align-items-center mb-0" style="text-align: center">
                                 <thead>
                                 <tr>
                                     <th class="col-md-2" ><p>NAME</p></th>
+                                    <th class="col-md-2"><p>AMOUNT</p></th>
+                                    <th class="col-md-2 "><p>NOTE</p></th>
+                                    <th class="col-md-2"><p>CREATE</p></th>
                                     <th class="col-md-2"><p>ICON</p></th>
-                                    <th class="col-md-2 "><p>AMOUNT</p></th>
-                                    <th class="col-md-2"><p>NOTE</p></th>
-                                    <th class="col-md-2"><p>CREATED</p></th>
                                     <th class="col-md-2" ><p>ACTION</p></th>
                                 </tr>
                                 </thead>

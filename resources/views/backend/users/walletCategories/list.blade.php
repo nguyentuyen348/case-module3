@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-                            <table class="table align-items-center mb-0">
+                            <table class="table align-items-center mb-0" style="text-align: center">
                                 <thead>
                                 <tr >
                                     <th class="col-md-2"><p>NAME</p></th>
@@ -24,7 +24,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($wallet_categories as $wallet_category)
-                                    <tr id="wallet-category-{{$wallet_category->id}}">
+                                    <tr id="wallet-category-{{$wallet_category->id}}" class="table-active">
                                         <td>
                                         <p style="margin-left: 17px"> {{$wallet_category->name}}</p>
                                         </td>
