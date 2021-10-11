@@ -1,5 +1,5 @@
 @extends('backend.layout.master')
-@section('title','')
+@section('title','Wallet Detail')
 @section('content')
     <style>
         th {
@@ -110,13 +110,19 @@
                             </div>
                             <div style="background: lightblue;border-radius: 1em" class="card-body px-0 pt-0 pb-2 col-md-6">
                                 <div class="card-header" style="background: deepskyblue;" >
+                                    
                                     <h5>INCOMES LIST
-                                        <span>
-                                            <a href="">
+                                        <span style="float: right;">
+                                            <a href="{{ route('incomes.index') }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
   <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
   <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
 </svg>
+                                            </a>
+                                            <a href="{{route('wallets.createIncome',$wallet->id)}}"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                              </svg>
                                             </a>
                                         </span>
                                     </h5>
@@ -135,21 +141,21 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @if($costs)
-                                            @foreach($costs as $cost)
-                                            <tr id="cost-{{$cost->id}}">
+                                        @if($incomes)
+                                            @foreach($incomes as $income)
+                                            <tr id="income-{{$income->id}}">
                                                 <td>
-                                                    <div>{{$cost->name}}</div>
+                                                    <div>{{$income->name}}</div>
                                                     <div><img width="50px"
-                                                              src="{{asset('storage/'.$cost->cost_category->icon)}}"
-                                                              alt="{{asset('storage/'.$cost->cost_category->icon)}}">
+                                                              src="{{asset('storage/'.$income->income_category->icon)}}"
+                                                              alt="{{asset('storage/'.$income->income_category->icon)}}">
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    {{$cost->created_at}}
+                                                    {{$income->created_at}}
                                                 </td>
                                                 <td>
-                                                    {{$cost->amount}} <span>(VND)</span>
+                                                    {{$income->amount}} <span>(VND)</span>
                                                 </td>
                                                 {{--    <td>
                                                         {{$cost->note}}

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cost;
-use App\Models\Cost_category;
+use App\Models\Income;
 use App\Models\Wallet;
-use App\Models\Wallet_category;
 use Illuminate\Http\Request;
+use App\Models\Cost_category;
+use App\Models\Income_category;
+use App\Models\Wallet_category;
 
 class WalletController extends Controller
 {
@@ -36,7 +38,8 @@ class WalletController extends Controller
     {
         $wallet = Wallet::findOrFail($id);
         $costs = Cost::where('wallet_id', '=', $id)->get();
-        return view('backend.users.wallets.detail',compact('wallet','costs'));
+        $incomes = Income::where('wallet_id', '=', $id)->get();
+        return view('backend.users.wallets.detail',compact('wallet','costs','incomes'));
     }
 
     public function edit($id)
@@ -82,6 +85,26 @@ class WalletController extends Controller
         $cost->amount = $request->amount;
         $cost->note = $request->note;
         $cost->save();
+        return redirect()->action(WalletController::class, 'show');
+    }
+
+
+    public function createIncome($id)
+    {
+        $wallet=Wallet::findOrFail($id);
+        $incomeCategories=Income_category::all();
+        return view('backend.users.wallets.createIncome',compact('incomeCategories','wallet'));
+    }
+
+
+    public function storeIncome(Request $request, Income $income, $id) {
+        $wallet = Wallet::findOrFail($id);
+        $income->wallet_id = $request->wallet_id;
+        $income->name = $request->name;
+        $income->income_category_id = $request->income_category_id;
+        $income->amount = $request->amount;
+        $income->note = $request->note;
+        $income->save();
         return redirect()->action(WalletController::class, 'show');
     }
 }

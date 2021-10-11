@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CostController;\
+use App\Http\Controllers\CostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\WalletController;
@@ -46,6 +46,9 @@ Route::prefix('pages')->group(function () {
             Route::get('{id}/delete', [WalletController::class, 'delete'])->name('wallets.delete');
             Route::get('{id}/costs/create', [WalletController::class, 'createCost'])->name('wallets.createCost');
             Route::post('{id}/costs/create', [WalletController::class, 'storeCost'])->name('wallets.storeCost');
+            Route::get('{id}/incomes/create', [WalletController::class, 'createIncome'])->name('wallets.createIncome');
+            Route::post('{id}/incomes/create', [WalletController::class, 'storeIncome'])->name('wallets.storeIncome');
+
 
         Route::prefix('categories')->group(function () {
             Route::get('/list', [WalletCategoryController::class, 'index'])->name('walletCategories.index');
