@@ -32,16 +32,22 @@
                     </div>
                     <div>
 
+                        {{--start COSTS LIST--}}
                         <div class="col-12" style="display: flex;">
-                            <div class="card-body px-0 pt-0 pb-2 col-md-6" style="background: lightblue;border-radius: 1em">
+                            <div class="card-body px-0 pt-0 pb-2 col-md-6"
+                                 style="background: lightblue;border-radius: 1em">
                                 <div class="card-header" style="background: cornflowerblue">
                                     <a href="{{route('wallets.createCost',$wallet->id)}}">add</a>
                                     <h5>COSTS LIST
                                         <span>
-                                            <a href="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
-  <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-  <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                                            <a href="{{route('wallets.listCosts',$wallet->id)}}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                     fill="currentColor" class="bi bi-card-checklist"
+                                                     viewBox="0 0 16 16">
+  <path
+      d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+  <path
+      d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
 </svg>
                                             </a>
                                         </span>
@@ -64,19 +70,22 @@
                                         <tbody>
                                         @if($costs)
                                             @foreach($costs as $cost)
-                                            <tr id="cost-{{$cost->id}}">
-                                                <td>
-                                                    <div>{{$cost->name}}</div>
-                                                    <div><img width="50px"
-                                                         src="{{asset('storage/'.$cost->cost_category->icon)}}"
-                                                         alt="{{asset('storage/'.$cost->cost_category->icon)}}">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    {{$cost->created_at}}
-                                                </td>
-                                                <td>
-                                                    {{$cost->amount}} <span>(VND)</span>
+                                                <tr id="cost-{{$cost->id}}">
+                                                    <td>
+                                                        <div>{{$cost->name}}</div>
+                                                        <div>
+                                                            @if($cost->cost_category)
+                                                                <img width="50px"
+                                                                     src="{{asset('storage/'.$cost->cost_category->icon)}}"
+                                                                     alt="{{asset('storage/'.$cost->cost_category->icon)}}">
+                                                            @endif
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        {{$cost->created_at}}
+                                                    </td>
+                                                    <td>
+                                                        {{$cost->amount}} <span>(VND)</span>
                                                 </td>
                                                 {{--    <td>
                                                         {{$cost->note}}
@@ -110,7 +119,7 @@
                             </div>
                             <div style="background: lightblue;border-radius: 1em" class="card-body px-0 pt-0 pb-2 col-md-6">
                                 <div class="card-header" style="background: deepskyblue;" >
-                                    
+
                                     <h5>INCOMES LIST
                                         <span style="float: right;">
                                             <a href="{{ route('incomes.index') }}">

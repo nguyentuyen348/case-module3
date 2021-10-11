@@ -42,23 +42,31 @@ class WalletController extends Controller
         return view('backend.users.wallets.detail',compact('wallet','costs','incomes'));
     }
 
-    public function edit($id)
+    public function listCosts($id)
     {
-        $wallet=Wallet::findOrFail($id);
-        return view('backend.users.wallets.update',compact('wallet'));
+        $wallet = Wallet::findOrFail($id);
+        $costs = Cost::where('wallet_id', '=', $id)->get();
+        return view('backend.users.wallets.listCosts', compact('wallet', 'costs'));
     }
 
-    public function update(Request $request,$id)
+    public function edit($id)
     {
-        $wallet=Wallet::findOrFail($id);
-        $wallet->name=$request->name;
+        $wallet = Wallet::findOrFail($id);
+        return view('backend.users.wallets.update', compact('wallet'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $wallet = Wallet::findOrFail($id);
+        $wallet->name = $request->name;
+        $wallet->amount = $request->amount;
         if ($request->hasFile('icon')){
             $icon=$request->file('icon');
             $path=$icon->store('icons','public');
             $wallet->icon=$path;
         }
         $wallet->save();
-        return redirect()->route('wallets.detail');
+        return redirect()->action([WalletController::class, 'show'], $wallet->id);
     }
 
     public function delete($id)
@@ -85,7 +93,7 @@ class WalletController extends Controller
         $cost->amount = $request->amount;
         $cost->note = $request->note;
         $cost->save();
-        return redirect()->action(WalletController::class, 'show');
+        return redirect()->action([WalletController::class, 'show'], $wallet->id);
     }
 
 
