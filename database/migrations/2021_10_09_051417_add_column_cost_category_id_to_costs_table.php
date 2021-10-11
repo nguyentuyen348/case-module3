@@ -15,6 +15,7 @@ class AddColumnCostCategoryIdToCostsTable extends Migration
     {
         Schema::table('costs', function (Blueprint $table) {
             $table->unsignedBigInteger('cost_category_id')->nullable()->after('name');
+            $table->foreign('cost_category_id')->references('id')->on('cost_categories')->onDelete('cascade');
         });
     }
 

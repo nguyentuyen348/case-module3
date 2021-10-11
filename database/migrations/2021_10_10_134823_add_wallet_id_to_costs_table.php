@@ -15,7 +15,7 @@ class AddWalletIdToCostsTable extends Migration
     {
         Schema::table('costs', function (Blueprint $table) {
             $table->unsignedBigInteger('wallet_id')->after('id')->nullable();
-            $table->foreign('wallet_id')->references('id')->on('wallets');
+            $table->foreign('wallet_id')->references('id')->on('wallets')->onDelete('cascade');
         });
     }
 

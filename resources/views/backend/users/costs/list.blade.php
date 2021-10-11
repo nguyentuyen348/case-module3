@@ -1,7 +1,9 @@
 @extends('backend.layout.master')
 @section('title','List Cost')
 @section('content')
+    <style>
 
+    </style>
 
     <div style="margin-left: 22px">
     </div>
@@ -65,6 +67,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            {{ $costs->links() }}
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,7 @@ class AddForeignToWalletsTable extends Migration
     public function up()
     {
         Schema::table('wallets', function (Blueprint $table) {
-            $table->foreign('wallet_category_id')->references('id')->on('wallet_categories');
+            $table->foreign('wallet_category_id')->references('id')->on('wallet_categories')->onDelete('cascade');
         });
     }
 

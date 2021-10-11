@@ -15,7 +15,7 @@ class AddColumnIncomeCategoryIdToIncomesTable extends Migration
     {
         Schema::table('incomes', function (Blueprint $table) {
             $table->unsignedBigInteger('income_category_id')->nullable();
-            $table->foreign('income_category_id')->references('id')->on('income_categories');
+            $table->foreign('income_category_id')->references('id')->on('income_categories')->onDelete('cascade');
         });
     }
 
