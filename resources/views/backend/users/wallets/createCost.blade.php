@@ -5,18 +5,19 @@
         <div>
             <h6>Create Cost</h6>
         </div>
-        <form action="{{route('wallets.storeCost')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('wallets.storeCost',$wallet->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group col-md-9">
                 <label for="category">Name</label>
-                <input type="text" name="name" class="form-control" id="category" aria-describedby="" placeholder="enter name">
+                <input type="text" name="name" class="form-control" id="category" aria-describedby=""
+                       placeholder="enter name">
                 <small id="" class="form-text text-muted"></small>
             </div>
 
             <div class="form-group col-md-9">
                 <label for="wallet">Wallet</label>
-                <input type="text" value="{{$wallet->id}}">
-                @dd($wallet->id)
+                <input type="text" name="wallet_id" value="{{$wallet->id}}">
+
                 <small id="" class="form-text text-muted"></small>
             </div>
 
@@ -48,6 +49,7 @@
                 <label for="">Amount</label>
                 <input type="text" name="amount" class="form-control" id="" placeholder="enter amount">
             </div>
+
             <div class="form-group col-md-9">
                 <div class="form-group">
                     <label for="note">Note</label>

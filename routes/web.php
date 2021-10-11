@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\CostCategoryController;
 use App\Http\Controllers\CostController;
-use App\Http\Controllers\InComeCategoryController;
+use App\Http\Controllers\IncomeCategoryController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WalletCategoryController;
@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('backend.admin.dashboard');
-// });
+Route::get('/', function () {
+    return redirect()->route('wallets.index');
+});
 
 Route::prefix('pages')->group(function () {
     Route::get('/login', [LoginController::class, 'showFormLogin'])->name('login');
@@ -34,7 +34,7 @@ Route::prefix('pages')->group(function () {
     Route::post('change-password', [LoginController::class, 'changePassword'])->name('pages.changePassword');
 
 });
-Route::middleware('auth')->prefix('admin')->group(function () {
+/*Route::middleware('auth')->prefix('admin')->group(function () {*/
     Route::prefix('users')->group(function () {
         Route::prefix('wallets')->group(function () {
             Route::get('list', [WalletController::class, 'index'])->name('wallets.index');
@@ -45,7 +45,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
             Route::post('{id}/update', [WalletController::class, 'update'])->name('wallets.update');
             Route::get('{id}/delete', [WalletController::class, 'delete'])->name('wallets.delete');
             Route::get('{id}/costs/create', [WalletController::class, 'createCost'])->name('wallets.createCost');
-        Route::post('{id}/costs/create', [WalletController::class, 'storeCost'])->name('wallets.storeCost');
+            Route::post('{id}/costs/create', [WalletController::class, 'storeCost'])->name('wallets.storeCost');
 
         Route::prefix('categories')->group(function () {
             Route::get('/list', [WalletCategoryController::class, 'index'])->name('walletCategories.index');
@@ -90,4 +90,4 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         });
         });
     });
-});
+/*});*/

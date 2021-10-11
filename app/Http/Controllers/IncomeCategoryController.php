@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Income_category;
 use Illuminate\Http\Request;
 
-class InComeCategoryController extends Controller
+class IncomeCategoryController extends Controller
 {
     public function index()
     {
