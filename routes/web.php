@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\CostCategoryController;
-use App\Http\Controllers\CostController;
-use App\Http\Controllers\IncomeCategoryController;
-use App\Http\Controllers\IncomeController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\WalletCategoryController;
-use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CostController;\
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\WalletController;
+use App\Http\Controllers\CostCategoryController;
+use App\Http\Controllers\IncomeCategoryController;
+use App\Http\Controllers\WalletCategoryController;
 
 /*
 |--------------------------------------------------------------------------

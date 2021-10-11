@@ -1,5 +1,5 @@
 @extends('backend.layout.master')
-@section('title','List Cost Income')
+@section('title','List Income Category')
 @section('content')
 
     <div style="margin-left: 22px">
