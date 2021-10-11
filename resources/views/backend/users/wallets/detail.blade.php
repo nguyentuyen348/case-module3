@@ -5,7 +5,9 @@
         th {
             color: #156cbb;
         }
+
         button {}
+
     </style>
 
     <div class="container-fluid py-4">
@@ -30,17 +32,15 @@
                         </h4>
 
                         <p><span>TOTAL:</span><span>{{ $wallet->amount }}</span><span>(VND)</span></p>
-
                     </div>
                     <div>
 
                         {{-- start COSTS LIST --}}
                         <div class="col-12" style="display: flex;">
-                            <div class="card-body px-0 pt-0 pb-2 col-md-6"
-                                 style="background: lightblue;border-radius: 1em">
+                            <div class="card-body px-0 pt-0 pb-2 col-md-6" style="background: lightblue;border-radius: 1em">
                                 <div class="card-header" style="background: cornflowerblue">
 
-                                    <h5>COSTS LIST <span style="color: #af0d0d;margin-left: 100px"> TOTAL COSTS:</span>
+                                    <h5>COSTS LIST
                                         <span style="float: right;">
                                             <a href="{{ route('wallets.listCosts', $wallet->id) }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
@@ -71,12 +71,16 @@
                                                 <th class="col-md-2">
                                                     <p>NAME</p>
                                                 </th>
+                                                {{-- <th class="col-md-2"><p>ICON</p></th> --}}
                                                 <th class="col-md-2">
                                                     <p>CREATED</p>
                                                 </th>
                                                 <th class="col-md-2 ">
                                                     <p>AMOUNT</p>
                                                 </th>
+                                                {{-- <th class="col-md-2"><p>NOTE</p></th>
+                                             <th class="col-md-2"><p>CREATED</p></th>
+                                             <th class="col-md-2" ><p>ACTION</p></th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -99,6 +103,17 @@
                                                         <td>
                                                             {{ $cost->amount }} <span>(VND)</span>
                                                         </td>
+                                                        {{-- <td>
+                                                        {{$cost->note}}
+                                                    </td>
+                                                    <td>
+                                                        {{$cost->created_at}}
+                                                    </td>
+                                                    <td>
+
+                                                        <button class="btn btn-warning"><a style="color: #3333d5;" href="{{route('costs.edit',$cost->id)}}">UPDATE</a></button>
+                                                        <button data-id="{{$cost->id}}" class="btn btn-danger delete-cost" style="color: wheat">DELETE</button>
+                                                    </td> --}}
                                                     </tr>
                                                 @endforeach
                                             @endif
@@ -108,7 +123,8 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td>
-
+                                                    <p style="color: red"><span>TOTAL:</span><span
+                                                            style="margin-right: 40px">{{ $wallet->amount }}</span></p>
                                                 </td>
                                             </tr>
                                         </fbody>
@@ -118,13 +134,10 @@
                             <div style="width: 20px">
 
                             </div>
-                            <div style="background: lightblue;border-radius: 1em"
-                                 class="card-body px-0 pt-0 pb-2 col-md-6">
+                            <div style="background: lightblue;border-radius: 1em" class="card-body px-0 pt-0 pb-2 col-md-6">
                                 <div class="card-header" style="background: cornflowerblue;">
 
-                                    <h5>INCOMES LIST <span
-                                            style="color: #af0d0d;margin-left: 100px"> TOTAL INCOMES: </span>
-                                        <span style="float: right;">
+                                    <h5>INCOMES LIST
                                         <span style="float: right;">
                                             <a href="{{ route('wallets.listIncomes', $wallet->id) }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
@@ -137,30 +150,33 @@
                                             </a>
                                             <a href="{{ route('wallets.createIncome', $wallet->id) }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                                     fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                                    fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                     <path
-                                                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                                     <path
-                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                                 </svg>
                                             </a>
-                                        </span>
                                         </span>
                                     </h5>
                                 </div>
                                 <div class="table-responsive p-0">
                                     <table class="table align-items-center mb-0" style="text-align: center">
                                         <thead>
-                                        <tr>
-                                            <th class="col-md-2">
-                                                <p>NAME</p>
-                                            </th>
+                                            <tr>
+                                                <th class="col-md-2">
+                                                    <p>NAME</p>
+                                                </th>
+                                                {{-- <th class="col-md-2"><p>ICON</p></th> --}}
                                                 <th class="col-md-2">
                                                     <p>CREATED</p>
                                                 </th>
                                                 <th class="col-md-2 ">
                                                     <p>AMOUNT</p>
                                                 </th>
+                                                {{-- <th class="col-md-2"><p>NOTE</p></th>
+                                             <th class="col-md-2"><p>CREATED</p></th>
+                                             <th class="col-md-2" ><p>ACTION</p></th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -183,6 +199,17 @@
                                                         <td>
                                                             {{ $income->amount }} <span>(VND)</span>
                                                         </td>
+                                                        {{-- <td>
+                                                        {{$cost->note}}
+                                                    </td>
+                                                    <td>
+                                                        {{$cost->created_at}}
+                                                    </td>
+                                                    <td>
+
+                                                        <button class="btn btn-warning"><a style="color: #3333d5;" href="{{route('costs.edit',$cost->id)}}">UPDATE</a></button>
+                                                        <button data-id="{{$cost->id}}" class="btn btn-danger delete-cost" style="color: wheat">DELETE</button>
+                                                    </td> --}}
                                                     </tr>
                                                 @endforeach
                                             @endif
@@ -192,6 +219,8 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td>
+                                                    <p style="color: red"><span>TOTAL:</span><span
+                                                            style="margin-right: 40px">{{ $wallet->amount }}</span></p>
                                                 </td>
                                             </tr>
                                         </fbody>
@@ -206,8 +235,8 @@
     </div>
     </div>
     <script>
-        $(document).ready(function () {
-            $('#exampleModal').on('show.bs.modal', function (event) {
+        $(document).ready(function() {
+            $('#exampleModal').on('show.bs.modal', function(event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal
                 var recipient = button.data('whatever') // Extract info from data-* attributes
                 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -216,8 +245,6 @@
                 modal.find('.modal-title').text('New message to ' + recipient)
                 modal.find('.modal-body input').val(recipient)
             })
-
-
         })
     </script>
 

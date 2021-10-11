@@ -14,7 +14,7 @@
 
             <div class="form-group col-md-9">
                 <label for="">AMOUNT</label>
-                <input type="text" class="form-control" id="" value="{{$wallet->amount}}" name="amount"
+                <input type="text" class="form-control" id="" value="{{ number_format($wallet->amount, 3) }}" name="amount"
                        aria-describedby="">
             </div>
 

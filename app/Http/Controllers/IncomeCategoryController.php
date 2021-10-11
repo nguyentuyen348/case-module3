@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Income_category;
 use Illuminate\Http\Request;
+use App\Models\Income_category;
+use App\Http\Requests\CreateIncomeCategoryRequest;
+use App\Http\Requests\UpdateIncomeCategoryRequest;
 
 class IncomeCategoryController extends Controller
 {
@@ -20,7 +22,7 @@ class IncomeCategoryController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(CreateIncomeCategoryRequest $request)
     {
         $income_category = new Income_category();
         $income_category->name = $request->name;
@@ -41,7 +43,7 @@ class IncomeCategoryController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UpdateIncomeCategoryRequest $request, $id)
     {
         $income_category = Income_category::findOrFail($id);
         $income_category->name = $request->name;

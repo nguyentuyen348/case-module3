@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cost;
-use App\Models\Cost_category;
 use App\Models\Income;
-use App\Models\Income_category;
 use App\Models\Wallet;
-use App\Models\Wallet_category;
 use Illuminate\Http\Request;
+use App\Models\Cost_category;
+use App\Models\Income_category;
+use App\Models\Wallet_category;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\CreateIncomeRequest;
 
 
 class WalletController extends Controller
@@ -123,7 +124,7 @@ class WalletController extends Controller
     }
 
 
-    public function storeIncome(Request $request, Income $income, $id) {
+    public function storeIncome(CreateIncomeRequest $request, Income $income, $id) {
         $wallet = Wallet::findOrFail($id);
         $income->wallet_id = $request->wallet_id;
         $income->name = $request->name;
