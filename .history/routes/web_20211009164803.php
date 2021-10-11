@@ -27,7 +27,7 @@ Route::prefix('pages')->group(function () {
     Route::post('/register', [LoginController::class, 'register'])->name('pages.register');
     Route::get('change-password', [LoginController::class, 'showFormChangePassword'])->name('pages.showFormChangePassword');
     Route::post('change-password', [LoginController::class, 'changePassword'])->name('pages.changePassword');
-
+    
 });
 
 Route::prefix('users')->group(function (){
