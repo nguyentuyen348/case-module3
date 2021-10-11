@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCostCategoryRequest;
+use App\Http\Requests\UpdateCostCategoryRequest;
 use App\Models\Cost_category;
-use Illuminate\Http\Request;
 
 class CostCategoryController extends Controller
 {
     public function index()
     {
-        $cost_categories=Cost_category::all();
-        return view('backend.users.costCategories.list',compact('cost_categories'));
+        $cost_categories = Cost_category::all();
+        return view('backend.users.costCategories.list', compact('cost_categories'));
     }
 
     public function create()
@@ -18,13 +19,13 @@ class CostCategoryController extends Controller
         return view('backend.users.costCategories.create');
     }
 
-    public function store(Request $request,Cost_category $cost_category)
+    public function store(CreateCostCategoryRequest $request, Cost_category $cost_category)
     {
-        $cost_category->name=$request->name;
-        if ($request->hasFile('icon')){
-            $icon=$request->file('icon');
-            $path=$icon->store('icons','public');
-            $cost_category->icon=$path;
+        $cost_category->name = $request->name;
+        if ($request->hasFile('icon')) {
+            $icon = $request->file('icon');
+            $path = $icon->store('icons', 'public');
+            $cost_category->icon = $path;
         }
         $cost_category->save();
         return redirect()->route('costCategories.index');
@@ -36,14 +37,14 @@ class CostCategoryController extends Controller
         return view('backend.users.costCategories.update',compact('cost_category'));
     }
 
-    public function update(Request $request,$id)
+    public function update(UpdateCostCategoryRequest $request, $id)
     {
-        $cost_category=Cost_category::findOrFail($id);
-        $cost_category->name=$request->name;
-        if ($request->hasFile('icon')){
-            $icon=$request->file('icon');
-            $path=$icon->store('icons','public');
-            $cost_category->icon=$path;
+        $cost_category = Cost_category::findOrFail($id);
+        $cost_category->name = $request->name;
+        if ($request->hasFile('icon')) {
+            $icon = $request->file('icon');
+            $path = $icon->store('icons', 'public');
+            $cost_category->icon = $path;
         }
         $cost_category->save();
         return redirect()->route('costCategories.index');

@@ -51,7 +51,7 @@ class IncomeController extends Controller
         $income->note = $request->note;
         $income->income_category_id = $request->income_category_id;
         $income->save();
-        return redirect()->route('wallets.listIncomes');
+        return redirect()->action([WalletController::class, 'listIncomes'], $income->wallet_id);
     }
 
 

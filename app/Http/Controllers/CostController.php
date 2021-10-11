@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCostRequest;
+use App\Http\Requests\UpdateCostRequest;
 use App\Models\Cost;
 use App\Models\Cost_category;
-use Illuminate\Http\Request;
 
 class CostController extends Controller
 {
     public function index()
     {
         $costs = Cost::paginate(5);
-        return view('backend.users.costs.list',compact('costs'));
+        return view('backend.users.costs.list', compact('costs'));
     }
 
     public function create()
@@ -20,12 +21,12 @@ class CostController extends Controller
         return view('backend.users.costs.create',compact('costCategories'));
     }
 
-    public function store(Request $request,Cost $cost)
+    public function store(CreateCostRequest $request, Cost $cost)
     {
-        $cost->name=$request->name;
-        $cost->cost_category_id=$request->cost_category_id;
-        $cost->amount=$request->amount;
-        $cost->note=$request->note;
+        $cost->name = $request->name;
+        $cost->cost_category_id = $request->cost_category_id;
+        $cost->amount = $request->amount;
+        $cost->note = $request->note;
         $cost->save();
         return redirect()->route('costs.index');
     }
@@ -37,15 +38,15 @@ class CostController extends Controller
         return view('backend.users.costs.update',compact('cost','costCategories'));
     }
 
-    public function update(Request $request,$id)
+    public function update(UpdateCostRequest $request, $id)
     {
-        $cost=Cost::findOrFail($id);
-        $cost->name=$request->name;
-        $cost->cost_category_id=$request->cost_category_id;
-        $cost->amount=$request->amount;
-        $cost->note=$request->note;
+        $cost = Cost::findOrFail($id);
+        $cost->name = $request->name;
+        $cost->cost_category_id = $request->cost_category_id;
+        $cost->amount = $request->amount;
+        $cost->note = $request->note;
         $cost->save();
-        return redirect()->route('costs.index');
+        return redirect()->action([WalletController::class, 'listCosts'], $cost->wallet_id);
     }
 
     public function delete($id)

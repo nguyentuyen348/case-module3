@@ -2,9 +2,6 @@
 @section('title', 'List Income')
 @section('content')
 
-    <div style="margin-left: 22px">
-        <a href="{{ route('incomes.create') }}" class="btn btn-success">create new</a>
-    </div>
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -81,6 +78,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            
                         </div>
                     </div>
                 </div>
