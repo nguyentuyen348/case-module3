@@ -37,7 +37,6 @@ class IncomeController extends Controller
 
     public function edit($id)
     {
-
         $income = Income::findOrFail($id);
         $incomeCategories = Income_category::all();
         return view('backend.users.incomes.update', compact('income', 'incomeCategories'));
@@ -52,7 +51,7 @@ class IncomeController extends Controller
         $income->note = $request->note;
         $income->income_category_id = $request->income_category_id;
         $income->save();
-        return redirect()->route('');
+        return redirect()->route('wallets.listIncomes');
     }
 
 

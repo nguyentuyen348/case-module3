@@ -49,6 +49,16 @@ class WalletController extends Controller
         return view('backend.users.wallets.listCosts', compact('wallet', 'costs'));
     }
 
+
+    public function listIncomes($id)
+    {
+        $wallet = Wallet::findOrFail($id);
+        $incomes = Income::where('wallet_id', '=', $id)->get();
+        return view('backend.users.wallets.listIncomes', compact('wallet', 'incomes'));
+    }
+
+
+
     public function edit($id)
     {
         $wallet = Wallet::findOrFail($id);
@@ -72,6 +82,9 @@ class WalletController extends Controller
     public function delete($id)
     {
         $wallet=Wallet::findOrFail($id);
+        $wallet->cost()->detach();
+        $wallet->cost()->detach();
+        $wallet->wallet_category()->detach();
         $wallet->delete();
         session('success', 'delete success');
         return redirect()->route('wallets.index');

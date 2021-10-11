@@ -11,7 +11,7 @@ class Wallet extends Model
 
     public function wallet_category()
     {
-        return $this->belongsTo(Wallet_category::class);
+        return $this->belongsTo(Wallet_category::class);;
     }
 
     public function cost()
@@ -21,7 +21,7 @@ class Wallet extends Model
 
     public function income()
     {
-        return $this->belongsTo(Income::class);
+        return $this->hasMany(Income::class);
     }
 
 

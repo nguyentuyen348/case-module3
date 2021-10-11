@@ -17,7 +17,7 @@ class Income extends Model
 
     function wallet()
     {
-        return $this->hasMany(Wallet::class);
+        return $this->belongsTo(Wallet::class);
     }
 
     function checkCategoryId($id)
