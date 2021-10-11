@@ -2,8 +2,10 @@
 @section('title','List Cost')
 @section('content')
 
-
     <div style="margin-left: 22px">
+        <h4><span>{{$wallet->name}}</span></h4>
+        <p><span>TOTAL:</span><span>{{$wallet->amount}} (VND)</span></p>
+        <a href="{{route('wallets.createCost',$wallet->id)}}" class="btn btn-success">create new</a>
     </div>
     <div class="container-fluid py-4">
         <div class="row">
@@ -17,24 +19,18 @@
                             <table class="table align-items-center mb-0" style="text-align: center">
                                 <thead>
                                 <tr>
-                                    <th><p>WALLET USE</p></th>
                                     <th class="col-md-2"><p>NAME</p></th>
+
                                     <th class="col-md-2 "><p>AMOUNT</p></th>
                                     <th class="col-md-2"><p>NOTE</p></th>
                                     <th class="col-md-2"><p>CREATED</p></th>
-                                    <th class="col-md-2"><p>ICON</p></th>
                                     <th class="col-md-2"><p>ACTION</p></th>
-
+                                    <th class="col-md-2"><p>ICON</p></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($costs as $cost)
                                     <tr class="table-active" id="cost-{{$cost->id}}">
-                                        <td>
-                                            @if($cost->wallet)
-                                                {{$cost->wallet->name}}
-                                            @endif
-                                        </td>
                                         <td>
                                             {{$cost->name}}
                                         </td>
@@ -70,7 +66,7 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
 
 @endsection
