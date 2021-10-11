@@ -47,6 +47,9 @@ Route::prefix('pages')->group(function () {
             Route::get('{id}/delete', [WalletController::class, 'delete'])->name('wallets.delete');
             Route::get('{id}/costs/create', [WalletController::class, 'createCost'])->name('wallets.createCost');
             Route::post('{id}/costs/create', [WalletController::class, 'storeCost'])->name('wallets.storeCost');
+            Route::get('{id}/incomes/create', [WalletController::class, 'createIncome'])->name('wallets.createIncome');
+            Route::post('{id}/incomes/create', [WalletController::class, 'storeIncome'])->name('wallets.storeIncome');
+
 
             Route::get('{id}/costs/list', [WalletController::class, 'listCosts'])->name('wallets.listCosts');
 
