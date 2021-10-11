@@ -3,20 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cost;
-use App\Models\Income;
-use App\Models\Wallet;
-use Illuminate\Http\Request;
 use App\Models\Cost_category;
+use App\Models\Income;
 use App\Models\Income_category;
+use App\Models\Wallet;
 use App\Models\Wallet_category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class WalletController extends Controller
 {
     public function index()
     {
-        $wallet_categories=Wallet_category::all();
-        $wallets=Wallet::all();
-        return view('backend.users.wallets.list',compact('wallets','wallet_categories'));
+        $wallet_categories = Wallet_category::all();
+        $wallets = Wallet::all();
+        return view('backend.users.wallets.list', compact('wallets', 'wallet_categories'));
     }
 
     public function create()
@@ -46,7 +48,13 @@ class WalletController extends Controller
     {
         $wallet = Wallet::findOrFail($id);
         $costs = Cost::where('wallet_id', '=', $id)->get();
-        return view('backend.users.wallets.listCosts', compact('wallet', 'costs'));
+        $total = DB::table('costs')->where('wallet_id', '=', $id)->sum('amount');
+        dd($total);
+        return view('backend.users.wallets.listCosts', compact('wallet', 'costs', 'total'));
+    }
+
+    public function sumCost()
+    {
     }
 
 
@@ -82,9 +90,6 @@ class WalletController extends Controller
     public function delete($id)
     {
         $wallet=Wallet::findOrFail($id);
-        $wallet->cost()->detach();
-        $wallet->cost()->detach();
-        $wallet->wallet_category()->detach();
         $wallet->delete();
         session('success', 'delete success');
         return redirect()->route('wallets.index');

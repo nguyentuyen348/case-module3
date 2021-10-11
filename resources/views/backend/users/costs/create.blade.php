@@ -9,9 +9,12 @@
             @csrf
             <div class="form-group col-md-9">
                 <label for="category">Name</label>
-                <input type="text" name="name" class="form-control" id="category" aria-describedby=""
+                <input type="text" name="name" class="form-control @error('name') is-valid @enderror " id="category"
+                       aria-describedby=""
                        placeholder="enter name">
-                <small id="" class="form-text text-muted"></small>
+                @error('name')
+                <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
 
             <input type="text" name="wallet_id" value="{{$wallet->id}}">
