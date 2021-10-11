@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignToWalletsTable extends Migration
+class AddColumnCostCategoryIdToCostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddForeignToWalletsTable extends Migration
      */
     public function up()
     {
-        Schema::table('wallets', function (Blueprint $table) {
-            $table->foreign('wallet_category_id')->references('id')->on('wallet_categories')->onDelete('cascade');
+        Schema::table('costs', function (Blueprint $table) {
+            $table->unsignedBigInteger('cost_category_id')->nullable()->after('name');
+            $table->foreign('cost_category_id')->references('id')->on('cost_categories')->onDelete('cascade');
         });
     }
 
@@ -25,7 +26,7 @@ class AddForeignToWalletsTable extends Migration
      */
     public function down()
     {
-        Schema::table('wallets', function (Blueprint $table) {
+        Schema::table('costs', function (Blueprint $table) {
             //
         });
     }

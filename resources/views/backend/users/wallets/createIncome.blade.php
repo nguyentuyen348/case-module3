@@ -1,51 +1,55 @@
 @extends('backend.layout.master')
-@section('title','Create Cost')
+@section('title','Create InCome')
 @section('content')
     <div>
         <div>
-            <h6>Create Cost</h6>
+            <h6>Create InCome</h6>
         </div>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="{{route('wallets.storeIncome',$wallet->id)}}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="form-group col-md-9">
+                <div class="form-group col-md-9">
                 <label for="category">Name</label>
                 <input type="text" name="name" class="form-control" id="category" aria-describedby=""
                        placeholder="enter name">
                 <small id="" class="form-text text-muted"></small>
             </div>
 
-            <input type="text" name="wallet_id" value="{{$wallet->id}}">
+            <div class="form-group col-md-9" hidden>
+                <label for="wallet">Wallet</label>
+                <input type="text" name="wallet_id" value="{{$wallet->id}}">
+
+                <small id="" class="form-text text-muted"></small>
+            </div>
 
             <label>Icon</label>
 
             <div class="form-group col-md-9" style="display: flex">
                 <br>
-                @foreach($costCategories as $costCategory)
+                @foreach($incomeCategories as $incomeCategory)
                     <div style="display: flex;padding: 0 40px 10px 0">
                         <div>
-                            <input type="checkbox" id="cost_category_id" name="cost_category_id"
-                                   value="{{$costCategory->id}}">
+                            <input type="checkbox" id="income_category_id" name="income_category_id" value="{{$incomeCategory->id}}">
                         </div>
-                    <div>
-                        <label for="">{{$costCategory->name}}</label>
-                        <br>
-                        <label for=""><img width="50px" src="{{asset('storage/'.$costCategory->icon)}}"
-                                           alt="{{asset('storage/'.$costCategory->icon)}}">
-                        </label>
-                    </div>
-                    <div>
+                        <div>
+                            <label for="">{{$incomeCategory->name}}</label>
+                            <br>
+                            <label for=""><img width="50px" src="{{asset('storage/'.$incomeCategory->icon)}}"
+                                               alt="{{asset('storage/'.$incomeCategory->icon)}}">
+                            </label>
+                        </div>
+                        <div>
 
+                        </div>
                     </div>
-                </div>
                 @endforeach
-                    <br>
-
+                <br>
             </div>
 
             <div class="form-group col-md-9">
                 <label for="">Amount</label>
                 <input type="text" name="amount" class="form-control" id="" placeholder="enter amount">
             </div>
+
             <div class="form-group col-md-9">
                 <div class="form-group">
                     <label for="note">Note</label>

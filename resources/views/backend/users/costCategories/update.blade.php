@@ -1,5 +1,5 @@
 @extends('backend.layout.master')
-@section('title','update')
+@section('title','Update Cost Category')
 @section('content')
     <div>
         <form action="" method="post" enctype="multipart/form-data">
@@ -11,8 +11,10 @@
             </div>
             <div class="form-group col-md-9">
                 <label for="icon">Icon</label>
+
                 <input type="file" value="{{$cost_category->icon}}" class="form-control" id="icon" name="icon">
                 <img width="100px" src="{{asset('storage/'.$cost_category->icon)}}" alt="{{asset('storage/'.$cost_category->icon)}}">
+
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

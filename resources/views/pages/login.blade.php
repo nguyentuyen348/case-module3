@@ -42,18 +42,19 @@
 
                 <div {{-- class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email" --}}>
                     <input class="input100 @error('email') is-invalid @enderror" type="email" name="email"
-                        placeholder="Email">
+                           placeholder="Email">
                     <span class="focus-input100"></span>
                     @error('email')
-                        <p class="text-danger">{{ $message }}</p>
+                    <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div>
-                    <input class="input100 @error('email') is-invalid @enderror" type="password" id="password" name="password" placeholder="Password">
+                    <input class="input100 @error('password') is-invalid @enderror" type="password" id="password"
+                           name="password" placeholder="Password">
                     <span class="focus-input100"></span>
                     @error('password')
-                        <p class="text-danger">{{ $message }}</p>
+                    <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -112,7 +113,20 @@
     <!--===============================================================================================-->
     <script src="{{ asset('js/main.js') }}"></script>
 
-
+    <script>
+        function visibility() {
+            var x = document.getElementById('password');
+            if (x.type === 'password') {
+                x.type = "text";
+                $('#eyeShow').show();
+                $('#eyeSlash').hide();
+            } else {
+                x.type = "password";
+                $('#eyeShow').hide();
+                $('#eyeSlash').show();
+            }
+        }
+    </script>
 </body>
 
 </html>

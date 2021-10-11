@@ -11,6 +11,25 @@ class Wallet extends Model
 
     public function wallet_category()
     {
-        return $this->belongsTo(Wallet_category::class);
+        return $this->belongsTo(Wallet_category::class);;
+    }
+
+    public function cost()
+    {
+        return $this->hasMany(Cost::class);
+    }
+
+    public function income()
+    {
+        return $this->hasMany(Income::class);
+    }
+
+
+    public function checkCategoryId($id)
+    {
+        if ($this->cost_category_id == $id) {
+            return true;
+        }
+        return false;
     }
 }
