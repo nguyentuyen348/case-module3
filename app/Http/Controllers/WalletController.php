@@ -113,6 +113,6 @@ class WalletController extends Controller
         $income->amount = $request->amount;
         $income->note = $request->note;
         $income->save();
-        return redirect()->action(WalletController::class, 'show');
+        return redirect()->action([WalletController::class, 'show'], $wallet->id);
     }
 }
