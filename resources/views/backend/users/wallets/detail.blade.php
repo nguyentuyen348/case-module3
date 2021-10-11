@@ -5,9 +5,7 @@
         th {
             color: #156cbb;
         }
-
         button {}
-
     </style>
 
     <div class="container-fluid py-4">

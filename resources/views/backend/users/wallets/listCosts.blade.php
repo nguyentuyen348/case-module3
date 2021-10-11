@@ -61,7 +61,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            {{ $costs->links() }}
+                    
                         </div>
                     </div>
                 </div>
