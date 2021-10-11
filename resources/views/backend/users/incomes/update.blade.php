@@ -19,8 +19,7 @@
             <div class="form-group col-md-9">
                 <div class="form-group">
                     <label for="note">Note</label>
-                    <textarea class="form-control" id="note" rows="3" name="note"
-                              value="{{ $income->note }}"></textarea>
+                    <textarea class="form-control" id="note" rows="3" name="note">{{ $income->note }}</textarea>
                 </div>
             </div>
 
