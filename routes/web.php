@@ -52,6 +52,8 @@ Route::prefix('pages')->group(function () {
 
 
             Route::get('{id}/costs/list', [WalletController::class, 'listCosts'])->name('wallets.listCosts');
+            Route::get('{id}/incomes/list', [WalletController::class, 'listIncomes'])->name('wallets.listIncomes');
+
 
             Route::prefix('categories')->group(function () {
                 Route::get('/list', [WalletCategoryController::class, 'index'])->name('walletCategories.index');
