@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Income;
-use App\Models\Income_category;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
+use App\Models\Income_category;
 
 class IncomeController extends Controller
 {
@@ -51,7 +52,7 @@ class IncomeController extends Controller
         $income->note = $request->note;
         $income->income_category_id = $request->income_category_id;
         $income->save();
-        return redirect()->route('incomes.index');
+        return redirect()->route('wallets.listIncomes');
     }
 
 

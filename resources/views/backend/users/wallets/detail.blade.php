@@ -39,7 +39,7 @@
                         <div class="col-12" style="display: flex;">
                             <div class="card-body px-0 pt-0 pb-2 col-md-6" style="background: lightblue;border-radius: 1em">
                                 <div class="card-header" style="background: cornflowerblue">
-                                    
+
                                     <h5>COSTS LIST
                                         <span style="float: right;">
                                             <a href="{{ route('wallets.listCosts', $wallet->id) }}">
@@ -139,7 +139,7 @@
 
                                     <h5>INCOMES LIST
                                         <span style="float: right;">
-                                            <a href="{{ route('incomes.index') }}">
+                                            <a href="{{ route('wallets.listIncomes', $wallet->id) }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                                                     fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
                                                     <path
@@ -185,9 +185,12 @@
                                                     <tr id="income-{{ $income->id }}">
                                                         <td>
                                                             <div>{{ $income->name }}</div>
-                                                            <div><img width="50px"
-                                                                    src="{{ asset('storage/' . $income->income_category->icon) }}"
-                                                                    alt="{{ asset('storage/' . $income->income_category->icon) }}">
+                                                            <div>
+                                                                @if ($income->income_category)
+                                                                    <img width="50px"
+                                                                        src="{{ asset('storage/' . $income->income_category->icon) }}"
+                                                                        alt="{{ asset('storage/' . $income->income_category->icon) }}">
+                                                                @endif
                                                             </div>
                                                         </td>
                                                         <td>
