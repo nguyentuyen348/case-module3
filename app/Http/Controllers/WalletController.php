@@ -34,8 +34,8 @@ class WalletController extends Controller
 
     public function show($id)
     {
-        $costs=Cost::all();
-        $wallet=Wallet::findOrFail($id);
+        $wallet = Wallet::findOrFail($id);
+        $costs = Cost::where('wallet_id', '=', $id)->get();
         return view('backend.users.wallets.detail',compact('wallet','costs'));
     }
 
@@ -73,14 +73,15 @@ class WalletController extends Controller
         return view('backend.users.wallets.createCost',compact('costCategories','wallet'));
     }
 
-    public function storeCost(Request $request,Cost $cost)
+    public function storeCost(Request $request, Cost $cost, $id)
     {
-        $cost->wallet_id=$request->wallet_id;
-        $cost->name=$request->name;
-        $cost->cost_category_id=$request->cost_category_id;
-        $cost->amount=$request->amount;
-        $cost->note=$request->note;
+        $wallet = Wallet::findOrFail($id);
+        $cost->wallet_id = $request->wallet_id;
+        $cost->name = $request->name;
+        $cost->cost_category_id = $request->cost_category_id;
+        $cost->amount = $request->amount;
+        $cost->note = $request->note;
         $cost->save();
-        return redirect()->route('wallets.detail');
+        return redirect()->action(WalletController::class, 'show');
     }
 }

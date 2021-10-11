@@ -30,18 +30,8 @@
 
                         <p><span>TOTAL:</span><span>{{$wallet->amount}}</span><span>(VND)</span></p>
                     </div>
-
                     <div>
-                     {{--   <div class="col-12" style="display: flex">
-                            <div class="card-header pb-0 col-md-6">
-                                <h5>COSTS LIST</h5>
-                            </div>
 
-                            <div class="card-header pb-0 col-md-6 " style="background: deepskyblue">
-                                <h5>INCOMES LIST</h5>
-                            </div>
-
-                        </div>--}}
                         <div class="col-12" style="display: flex;">
                             <div class="card-body px-0 pt-0 pb-2 col-md-6" style="background: lightblue;border-radius: 1em">
                                 <div class="card-header" style="background: cornflowerblue">
@@ -72,7 +62,8 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($costs as $cost)
+                                        @if($costs)
+                                            @foreach($costs as $cost)
                                             <tr id="cost-{{$cost->id}}">
                                                 <td>
                                                     <div>{{$cost->name}}</div>
@@ -99,7 +90,8 @@
                                                         <button data-id="{{$cost->id}}" class="btn btn-danger delete-cost" style="color: wheat">DELETE</button>
                                                     </td>--}}
                                             </tr>
-                                        @endforeach
+                                            @endforeach
+                                        @endif
                                         </tbody>
                                         <fbody>
                                             <tr>
@@ -143,7 +135,8 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($costs as $cost)
+                                        @if($costs)
+                                            @foreach($costs as $cost)
                                             <tr id="cost-{{$cost->id}}">
                                                 <td>
                                                     <div>{{$cost->name}}</div>
@@ -170,7 +163,8 @@
                                                         <button data-id="{{$cost->id}}" class="btn btn-danger delete-cost" style="color: wheat">DELETE</button>
                                                     </td>--}}
                                             </tr>
-                                        @endforeach
+                                            @endforeach
+                                        @endif
                                         </tbody>
                                         <fbody>
                                             <tr>

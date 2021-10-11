@@ -64,6 +64,7 @@ class LoginController extends Controller
         } catch (Exception $exception) {
             DB::rollBack();
         }
+
         return redirect()->route('login');
     }
 
