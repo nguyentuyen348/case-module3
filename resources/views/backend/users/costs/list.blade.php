@@ -56,7 +56,7 @@
                                             </td>
 
                                             <td>
-                                                {{ $cost->amount }}
+                                                {{ number_format($cost->amount, 3) }}
                                             </td>
                                             <td>
                                                 {{ $cost->note }}

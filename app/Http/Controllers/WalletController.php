@@ -10,6 +10,7 @@ use App\Models\Wallet;
 use App\Models\Wallet_category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\CreateIncomeRequest;
 
 
 class WalletController extends Controller
@@ -106,7 +107,6 @@ class WalletController extends Controller
 
     public function storeCost(Request $request, Cost $cost, $id)
     {
-
         $wallet = Wallet::findOrFail($id);
         $cost->wallet_id = $request->wallet_id;
         $cost->name = $request->name;
@@ -134,8 +134,7 @@ class WalletController extends Controller
     }
 
 
-    public function storeIncome(Request $request, Income $income, $id)
-    {
+    public function storeIncome(CreateIncomeRequest $request, Income $income, $id) {
         $wallet = Wallet::findOrFail($id);
         $income->wallet_id = $request->wallet_id;
         $income->name = $request->name;

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Income;
-use App\Models\Income_category;
 use Illuminate\Http\Request;
+use App\Models\Income_category;
+use App\Http\Requests\CreateIncomeRequest;
+use App\Http\Requests\UpdateIncomeRequest;
 
 class IncomeController extends Controller
 {
@@ -43,7 +45,7 @@ class IncomeController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UpdateIncomeRequest $request, $id)
     {
         $income = Income::findOrFail($id);
         $income->name = $request->name;

@@ -28,6 +28,7 @@
                     <div style="display: flex;padding: 0 40px 10px 0">
                         <div>
                             <input type="checkbox" id="cost_category_id" name="cost_category_id" value="{{$costCategory->id}}">
+                            
                         </div>
                         <div>
                             <label for="">{{$costCategory->name}}</label>

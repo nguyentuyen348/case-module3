@@ -50,7 +50,7 @@
                                                 {{ $income->name }}
                                             </td>
                                             <td>
-                                                {{ $income->amount }}
+                                                {{ number_format($income->amount, 3) }}
                                             </td>
                                             <td>
                                                 {{ $income->note }}

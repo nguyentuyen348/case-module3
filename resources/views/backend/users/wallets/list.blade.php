@@ -24,7 +24,7 @@
                                         @endif
                                     <p>{{$wallet->name}}</p>
                                     </a>
-                                <p>{{$wallet->amount}}</p>
+                                <p>{{ number_format($wallet->amount, 3) }}</p>
 
                                 </div>
                             </div>
