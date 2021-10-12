@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cost;
-use App\Models\Income;
-use App\Models\Wallet;
-use Illuminate\Http\Request;
 use App\Models\Cost_category;
+use App\Models\Income;
 use App\Models\Income_category;
+use App\Models\Wallet;
 use App\Models\Wallet_category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateIncomeRequest;
 
@@ -32,7 +32,8 @@ class WalletController extends Controller
     {
         $wallet->name=$request->name;
         $wallet->wallet_category_id=$request->wallet_category_id;
-        $wallet->amount=$request->amount;
+        $wallet->amount = $request->amount;
+        $wallet->total_current = 0;
         $wallet->save();
         return redirect()->route('wallets.index');
     }
@@ -41,17 +42,18 @@ class WalletController extends Controller
     {
         $wallet = Wallet::findOrFail($id);
         $costs = Cost::where('wallet_id', '=', $id)->get();
+        $totalCosts = DB::table('costs')->where('wallet_id', '=', $id)->sum('amount');
         $incomes = Income::where('wallet_id', '=', $id)->get();
-        return view('backend.users.wallets.detail',compact('wallet','costs','incomes'));
+        $totalIncomes = DB::table('incomes')->where('wallet_id', '=', $id)->sum('amount');
+
+        return view('backend.users.wallets.detail', compact('wallet', 'costs', 'incomes', 'totalCosts', 'totalIncomes'));
     }
 
     public function listCosts($id)
     {
         $wallet = Wallet::findOrFail($id);
         $costs = Cost::where('wallet_id', '=', $id)->get();
-        $total = DB::table('costs')->where('wallet_id', '=', $id)->sum('amount');
-        dd($total);
-        return view('backend.users.wallets.listCosts', compact('wallet', 'costs', 'total'));
+        return view('backend.users.wallets.listCosts', compact('wallet', 'costs'));
     }
 
     public function sumCost()
@@ -111,8 +113,16 @@ class WalletController extends Controller
         $cost->cost_category_id = $request->cost_category_id;
         $cost->amount = $request->amount;
         $cost->note = $request->note;
-        $cost->save();
+        $wallet->total_current = $wallet->amount - $request->amount;
+        $wallet->amount = $wallet->total_current;
+        if ($wallet->amount > 0 && $wallet == 0) {
+            $cost->save();
+            $wallet->save();
+        } else {
+            session()->flash('error', 'NOT ENOUGH MONEY');
+        }
         return redirect()->action([WalletController::class, 'show'], $wallet->id);
+
     }
 
 
@@ -131,7 +141,10 @@ class WalletController extends Controller
         $income->income_category_id = $request->income_category_id;
         $income->amount = $request->amount;
         $income->note = $request->note;
+        $wallet->total_current = $wallet->amount + $request->amount;
+        $wallet->amount = $wallet->total_current;
         $income->save();
+        $wallet->save();
         return redirect()->action([WalletController::class, 'show'], $wallet->id);
     }
 }
