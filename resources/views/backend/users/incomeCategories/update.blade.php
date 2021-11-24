@@ -1,20 +1,26 @@
 @extends('backend.layout.master')
-@section('title','Update Income Category')
+@section('title', 'Update Income Category')
 @section('content')
     <div>
         <form action="" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group col-md-9">
                 <label for="category">Update Income Category</label>
-                <input type="text" class="form-control" id="category" value="{{$income_category->name}}" name="name"
-                       aria-describedby="">
+                <input type="text" class="form-control" id="category" value="{{ $income_category->name }}" name="name"
+                    aria-describedby="">
+                @error('name')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
                 <small id="emailHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group col-md-9">
                 <label for="icon">Icon</label>
-                <input type="file" value="{{$income_category->icon}}" class="form-control" id="icon" name="icon">
-                <img width="100px" src="{{asset('storage/'.$income_category->icon)}}"
-                     alt="{{asset('storage/'.$income_category->icon)}}">
+                <input type="file" value="{{ $income_category->icon }}" class="form-control" id="icon" name="icon">
+                @error('icon')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+                <img width="100px" src="{{ asset('storage/' . $income_category->icon) }}"
+                    alt="{{ asset('storage/' . $income_category->icon) }}">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

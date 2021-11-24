@@ -15,8 +15,24 @@ class Income_categoriesSeeder extends Seeder
     public function run()
     {
         $income_categories = new Income_category();
-        $income_categories->name = 'salary';
-        $income_categories->icon = 'image.jpg';
+        $income_categories->name = 'Investment';
+        $income_categories->icon = 'icons/money-bag.png';
         $income_categories->save();
+
+        $income_categories = new Income_category();
+        $income_categories->name = 'Bank';
+        $income_categories->icon = 'icons/bank.png';
+        $income_categories->save();
+        
+        $income_categories = new Income_category();
+        $income_categories->name = 'Selling';
+        $income_categories->icon = 'icons/selling.png';
+        $income_categories->save();
+
+        $income_categories = new Income_category();
+        $income_categories->name = 'Salary';
+        $income_categories->icon = 'icons/salary.png';
+        $income_categories->save();
+
     }
 }

@@ -30,7 +30,7 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('wallets.create');
+            return redirect()->route('wallets.index');
         } else {
             return back();
         }
@@ -46,6 +46,7 @@ class LoginController extends Controller
 
     public function showFormRegister()
     {
+
         return view('pages.register');
     }
 
@@ -56,11 +57,13 @@ class LoginController extends Controller
         DB::beginTransaction();
         try {
             $user = new User();
+            $user->fill($request->all());
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->save();
             DB::commit();
+            return redirect()->route('login');
         } catch (Exception $exception) {
             DB::rollBack();
         }

@@ -32,4 +32,10 @@ class Wallet extends Model
         }
         return false;
     }
+
+    public function user()
+    {
+        return $this->belongsTo(Wallet::class);
+    }
+
 }
