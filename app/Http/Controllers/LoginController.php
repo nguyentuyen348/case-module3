@@ -30,7 +30,7 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('wallets.create');
+            return redirect()->route('wallets.index');
         } else {
             return back();
         }

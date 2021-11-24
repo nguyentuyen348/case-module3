@@ -11,7 +11,7 @@ class CostController extends Controller
 {
     public function index()
     {
-        $costs = Cost::paginate(5);
+        $costs = Cost::all();
         return view('backend.users.costs.list', compact('costs'));
     }
 

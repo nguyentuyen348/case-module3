@@ -17,8 +17,9 @@ class WalletController extends Controller
 {
     public function index()
     {
+        $user_id=auth()->user()->id;
         $wallet_categories = Wallet_category::all();
-        $wallets = Wallet::all();
+        $wallets =DB::table('wallets')->where('user_id', $user_id)->get();
         return view('backend.users.wallets.list', compact('wallets', 'wallet_categories'));
     }
 
@@ -30,12 +31,18 @@ class WalletController extends Controller
 
     public function store(Request $request,Wallet $wallet)
     {
-        $wallet->name=$request->name;
-        $wallet->wallet_category_id=$request->wallet_category_id;
-        $wallet->amount = $request->amount;
-        $wallet->total_current = 0;
-        $wallet->save();
-        return redirect()->route('wallets.index');
+        if (auth()->user()){
+            $wallet->user_id=auth()->user()->id;
+            $wallet->name=$request->name;
+            $wallet->wallet_category_id=$request->wallet_category_id;
+            $wallet->amount = $request->amount;
+            $wallet->total_current = 0;
+            $wallet->save();
+            return redirect()->route('wallets.index');
+        } else{
+          return redirect()->route('login');
+        }
+
     }
 
     public function show($id)
@@ -45,7 +52,6 @@ class WalletController extends Controller
         $totalCosts = DB::table('costs')->where('wallet_id', '=', $id)->sum('amount');
         $incomes = Income::where('wallet_id', '=', $id)->get();
         $totalIncomes = DB::table('incomes')->where('wallet_id', '=', $id)->sum('amount');
-
         return view('backend.users.wallets.detail', compact('wallet', 'costs', 'incomes', 'totalCosts', 'totalIncomes'));
     }
 
@@ -55,11 +61,6 @@ class WalletController extends Controller
         $costs = Cost::where('wallet_id', '=', $id)->get();
         return view('backend.users.wallets.listCosts', compact('wallet', 'costs'));
     }
-
-    public function sumCost()
-    {
-    }
-
 
     public function listIncomes($id)
     {
@@ -115,7 +116,7 @@ class WalletController extends Controller
         $cost->note = $request->note;
         $wallet->total_current = $wallet->amount - $request->amount;
         $wallet->amount = $wallet->total_current;
-        if ($wallet->amount > 0 && $wallet == 0) {
+        if ($wallet->amount >=0) {
             $cost->save();
             $wallet->save();
         } else {
