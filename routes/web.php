@@ -103,4 +103,3 @@ Route::middleware('auth')->prefix('users')->group(function () {
             });
         });
     });
-});
