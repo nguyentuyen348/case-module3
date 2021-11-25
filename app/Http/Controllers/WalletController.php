@@ -49,10 +49,10 @@ class WalletController extends Controller
     {
         $wallet = Wallet::findOrFail($id);
         $costs = Cost::where('wallet_id', '=', $id)->get();
-        $totalCosts = DB::table('costs')->where('wallet_id', '=', $id)->sum('amount');
+        // $totalCosts = DB::table('costs')->where('wallet_id', '=', $id)->sum('amount');
         $incomes = Income::where('wallet_id', '=', $id)->get();
-        $totalIncomes = DB::table('incomes')->where('wallet_id', '=', $id)->sum('amount');
-        return view('backend.users.wallets.detail', compact('wallet', 'costs', 'incomes', 'totalCosts', 'totalIncomes'));
+        // $totalIncomes = DB::table('incomes')->where('wallet_id', '=', $id)->sum('amount');
+        return view('backend.users.wallets.detail', compact('wallet', 'costs', 'incomes'));
     }
 
     public function listCosts($id)

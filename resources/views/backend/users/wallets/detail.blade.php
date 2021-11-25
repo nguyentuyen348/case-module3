@@ -47,8 +47,8 @@
                                  style="background: lightblue;border-radius: 1em">
                                 <div class="card-header" style="background: cornflowerblue">
 
-                                    <h5>COSTS LIST <span
-                                            style="color: #af0d0d;margin-left: 100px"> TOTAL COSTS: {{ $totalCosts }}</span>
+                                    <h5>COSTS LIST 
+                                        
                                         <span style="float: right;">
                                             <a href="{{ route('wallets.listCosts', $wallet->id) }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
@@ -130,8 +130,8 @@
                                  class="card-body px-0 pt-0 pb-2 col-md-6">
                                 <div class="card-header" style="background: cornflowerblue;">
 
-                                    <h5>INCOMES LIST <span
-                                            style="color: #af0d0d;margin-left: 100px"> TOTAL INCOMES: {{ $totalIncomes }}</span>
+                                    <h5>INCOMES LIST 
+                                       
                                         <span style="float: right;">
                                         <span style="float: right;">
                                             <a href="{{ route('wallets.listIncomes', $wallet->id) }}">
