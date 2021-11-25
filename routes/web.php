@@ -40,8 +40,7 @@ Route::prefix('pages')->group(function () {
     Route::get('change-password', [LoginController::class, 'showFormChangePassword'])->name('pages.showFormChangePassword');
     Route::post('change-password', [LoginController::class, 'changePassword'])->name('pages.changePassword');
 });
-Route::middleware('auth')->prefix('admin')->group(function () {
-    Route::prefix('users')->group(function () {
+Route::middleware('auth')->prefix('users')->group(function () {
         Route::prefix('wallets')->group(function () {
             Route::get('list', [WalletController::class, 'index'])->name('wallets.index');
             Route::get('create', [WalletController::class, 'create'])->name('wallets.create');
@@ -104,4 +103,3 @@ Route::middleware('auth')->prefix('admin')->group(function () {
             });
         });
     });
-});
