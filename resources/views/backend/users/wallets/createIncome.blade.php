@@ -24,8 +24,7 @@
                 <small id="" class="form-text text-muted"></small>
             </div>
 
-            <label>Icon</label>
-
+           
             <div class="form-group col-md-9" style="display: flex">
                 <br>
                 @foreach ($incomeCategories as $incomeCategory)
@@ -37,9 +36,9 @@
                         <div>
                             <label for="">{{ $incomeCategory->name }}</label>
                             <br>
-                            <label for=""><img width="50px" src="{{ asset('storage/' . $incomeCategory->icon) }}"
+                            <!-- <label for=""><img width="50px" src="{{ asset('storage/' . $incomeCategory->icon) }}"
                                     alt="{{ asset('storage/' . $incomeCategory->icon) }}">
-                            </label>
+                            </label> -->
                         </div>
                         <div>
 
