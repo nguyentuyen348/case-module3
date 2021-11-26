@@ -14,7 +14,7 @@
                 <small id="" class="form-text text-muted"></small>
             </div>
             <div class="form-group col-md-9">
-                <label>Icon</label>
+                
 
                 <div class="form-group col-md-9" style="display: flex">
                     <br>
@@ -27,9 +27,9 @@
                             <div>
                                 <label for="">{{$walletCategory->name}}</label>
                                 <br>
-                                <label for=""><img width="50px" src="{{asset('storage/'.$walletCategory->icon)}}"
+                                <!-- <label for=""><img width="50px" src="{{asset('storage/'.$walletCategory->icon)}}"
                                                    alt="{{asset('storage/'.$walletCategory->icon)}}">
-                                </label>
+                                </label> -->
                             </div>
                             <div>
 

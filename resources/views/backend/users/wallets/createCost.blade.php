@@ -20,7 +20,7 @@
                 <small id="" class="form-text text-muted"></small>
             </div>
 
-            <label>Icon</label>
+            
 
             <div class="form-group col-md-9" style="display: flex">
                 <br>
@@ -33,9 +33,9 @@
                         <div>
                             <label for="">{{$costCategory->name}}</label>
                             <br>
-                            <label for=""><img width="50px" src="{{asset('storage/'.$costCategory->icon)}}"
+                            <!-- <label for=""><img width="50px" src="{{asset('storage/'.$costCategory->icon)}}"
                                                alt="{{asset('storage/'.$costCategory->icon)}}">
-                            </label>
+                            </label> -->
                         </div>
                         <div>
 

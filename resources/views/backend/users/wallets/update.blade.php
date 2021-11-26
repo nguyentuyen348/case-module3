@@ -26,9 +26,10 @@
                               @endif
                               type="checkbox" id="cost_category_id-{{$wallet->wallet_category->id}}" name="cost_category_id" value="{{$wallet->wallet_category->id}}">
                       --}}{{-- <label for="cost_category_id-{{$costCategory->id}}">{{$costCategory->name}}</label>--}}{{--
-                      <label for="cost_category_id-{{$wallet->wallet_category->id}}"><img width="100px" src="{{asset('storage/'.$wallet->wallet_category->icon)}}"
+                      <!-- <label for="cost_category_id-{{$wallet->wallet_category->id}}">
+                          <img width="100px" src="{{asset('storage/'.$wallet->wallet_category->icon)}}"
                                                                                alt="{{asset('storage/'.$walletCategory->icon)}}">
-                      </label>
+                      </label> -->
                   @endforeach
               </div>--}}
             <button type="submit" class="btn btn-primary">Submit</button>
